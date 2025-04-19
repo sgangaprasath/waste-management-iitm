@@ -1,0 +1,39 @@
+# Node modules - the crucible of dependencies
+node_modules/
+
+# Local environment victuals
+.env
+.env.local
+.env.*.local
+
+# Build artifacts – reimagined each time you build
+.next/
+out/
+
+# OS files - remnants of the system labyrinth
+.DS_Store
+Thumbs.db
+
+# Log files - echoes from the past
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor folders – ephemeral traces of your workflow
+.vscode/
+.idea/
+
+# TinaCMS generated files – orchestrated in real-time
+.tina/
+
+# Optional: if you're using local markdown content in a specific folder
+content/**/*.md~
+content/**/*.mdx~
+
+# Optional cache layers - the enigmatic layer beneath
+.cache/
+.vercel/
+
+# Optional: if using TypeScript
+*.tsbuildinfo
