@@ -4,20 +4,32 @@
       "color": "orange",
       "style": "float"
     },
-    "name": "IIT Madras Waste Management",
+    "name": "IIT Madras Waste Management Portal",
     "color": "default",
     "nav": [
       {
-        "href": "/",
+        "href": "home",
         "label": "Home"
       },
       {
-        "href": "/about",
-        "label": "About"
+        "href": "/general",
+        "label": "General Guidelines"
       },
       {
-        "href": "/general",
-        "label": "General"
+        "href": "/zone",
+        "label": "Zone Specific Guidelines"
+      },
+      {
+        "href": "/lab",
+        "label": "Lab Waste"
+      },
+      {
+        "href": "/construction",
+        "label": "Construction Waste"
+      },
+      {
+        "href": "/about",
+        "label": "About us"
       }
     ]
   },
