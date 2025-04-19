@@ -1,0 +1,51 @@
+{
+  "header": {
+    "icon": {
+      "color": "orange",
+      "style": "float"
+    },
+    "name": "IIT Madras Waste Management",
+    "color": "default",
+    "nav": [
+      {
+        "href": "/",
+        "label": "Home"
+      },
+      {
+        "href": "/about",
+        "label": "About"
+      },
+      {
+        "href": "/general",
+        "label": "General"
+      }
+    ]
+  },
+  "footer": {
+    "social": [
+      {
+        "icon": {
+          "name": "FaLinkedin"
+        },
+        "url": "https://in.linkedin.com/school/reachiitm/"
+      },
+      {
+        "icon": {
+          "name": "FaYoutube"
+        },
+        "url": "https://www.youtube.com/channel/UCZgwOAjweG6NZKX5VWXLQLw"
+      },
+      {
+        "icon": {
+          "name": "FaXTwitter"
+        },
+        "url": "https://x.com/iitmadras"
+      }
+    ]
+  },
+  "theme": {
+    "color": "blue",
+    "font": "nunito",
+    "darkMode": "light"
+  }
+}
