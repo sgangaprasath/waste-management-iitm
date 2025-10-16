@@ -1,32 +1,13 @@
-import React from "react";
-import { Metadata } from "next";
-import { Inter as FontSans, Lato, Nunito } from "next/font/google";
-import { cn } from "@/lib/utils";
-import { VideoDialogProvider } from "@/components/ui/VideoDialogContext";
-import VideoDialog from "@/components/ui/VideoDialog";
+import "./global.css";
+import { Inter } from "next/font/google";
+import NavBar from "@/components/navbar";
+import Footer from "@/components/footer";
 
-import "@/styles.css";
-import { TailwindIndicator } from "@/components/ui/breakpoint-indicator";
+const inter = Inter({ subsets: ["latin"] });
 
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
-
-const nunito = Nunito({
-  subsets: ["latin"],
-  variable: "--font-nunito",
-});
-
-const lato = Lato({
-  subsets: ["latin"],
-  variable: "--font-lato",
-  weight: "400",
-});
-
-export const metadata: Metadata = {
-  title: "Tina",
-  description: "Tina Cloud Starter",
+export const metadata = {
+  title: "IIT Madras Waste Management",
+  description: "S Ganga Prasath's group page",
 };
 
 export default function RootLayout({
@@ -35,13 +16,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={cn(fontSans.variable, nunito.variable, lato.variable)}>
-      <body className="min-h-screen bg-background font-sans antialiased">
-        <VideoDialogProvider>
+    <html lang="en">
+      <body className="flex flex-col items-center justify-between h-auto w-auto px-24">
+          {/* Navigation bar */}
+          <NavBar />
           {children}
-          <VideoDialog />
-        </VideoDialogProvider>
-        <TailwindIndicator />
+          {/* Footer */}
+          <Footer />
       </body>
     </html>
   );
