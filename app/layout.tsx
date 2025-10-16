@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "IIT Madras Waste Management",
-  description: "S Ganga Prasath's group page",
+  description: "Waste disposal guidelines for IIT Madras",
 };
 
 export default function RootLayout({
