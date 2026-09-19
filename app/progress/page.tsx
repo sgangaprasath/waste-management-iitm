@@ -1,0 +1,207 @@
+import type { Metadata } from "next";
+import Figure from "@/components/figure";
+import { PageHeader, Section, SectionHead, StatGrid, Callout, NextSteps, Pill } from "@/components/ui";
+import Link from "next/link";
+import { headlineMetrics, campusFacts, population, CAP_URL } from "@/content/site";
+import { dailyVolumes, yard } from "@/content/flow";
+
+export const metadata: Metadata = {
+  title: "Progress & reporting",
+  description:
+    "What the IIT Madras campus measures on waste, energy, water and emissions — with sources, and an honest note on what is not yet measured.",
+};
+
+const emissions = [
+  { label: "Electricity", value: "13,208", unit: "tCO₂/yr" },
+  { label: "Transport — road", value: "2,923", unit: "tCO₂/yr" },
+  { label: "Transport — aviation", value: "1,144", unit: "tCO₂/yr" },
+  { label: "LPG — residential", value: "818", unit: "tCO₂/yr" },
+  { label: "LPG — hostels", value: "425", unit: "tCO₂/yr" },
+  { label: "Diesel", value: "245", unit: "tCO₂/yr" },
+];
+
+const notMeasured = [
+  "Total solid waste generated per day, campus-wide and by zone",
+  "Segregation compliance rate, measured rather than estimated",
+  "Diversion rate — the share of waste kept out of the municipal stream",
+  "E-waste tonnage consigned to certified recyclers",
+  "Hazardous and biomedical waste consigned, by category",
+  "Per-capita waste generation, by zone",
+];
+
+export default function ProgressPage() {
+  return (
+    <>
+      <PageHeader
+        eyebrow="Progress & reporting"
+        title="What the campus measures"
+        lede="A waste programme without measurement is a set of intentions. The figures the institute has published, their sources, and what is not yet measured."
+        crumbs={[{ label: "Progress", href: "/progress" }]}
+      />
+
+      <Section tone="paper">
+        <SectionHead
+          eyebrow="Headline figures"
+          title="Sustainability within reach"
+        />
+        <div className="mt-10">
+          <StatGrid items={headlineMetrics} />
+        </div>
+      </Section>
+
+      <Section tone="soft">
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_minmax(0,22rem)] lg:gap-14">
+          <div>
+            <SectionHead eyebrow="Operations" title="The campus in detail" />
+            <dl className="mt-10 divide-y divide-ink-hair border-y border-ink-line">
+              {campusFacts.map((f) => (
+                <div key={f.label} className="flex items-baseline gap-6 py-5">
+                  <dt className="w-32 shrink-0 font-serif text-[1.75rem] leading-none text-brand-700">
+                    {f.value}
+                    {f.unit ? (
+                      <span className="ml-1 font-sans text-xs font-medium text-ink-mute">{f.unit}</span>
+                    ) : null}
+                  </dt>
+                  <dd>
+                    <p className="text-[0.9375rem] text-ink">{f.label}</p>
+                    {f.note ? <p className="mt-1 text-[0.8125rem] text-ink-mute">{f.note}</p> : null}
+                    <p className="mt-1.5 text-[0.6875rem] uppercase tracking-[0.1em] text-ink-faint">
+                      {f.sourceUrl ? (
+                        <a href={f.sourceUrl} target="_blank" rel="noreferrer" className="hover:text-brand-600">
+                          {f.source}
+                        </a>
+                      ) : (
+                        f.source
+                      )}
+                      {f.verified === false ? (
+                        <span className="ml-2 rounded-sm bg-brand-50 px-1.5 py-0.5 normal-case tracking-normal text-brand-700">
+                          to confirm
+                        </span>
+                      ) : null}
+                    </p>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+
+            <h3 className="display-3 mt-14 text-xl">Campus population</h3>
+            <p className="mt-2 text-[0.9375rem] text-ink-mute">
+              Committee estimates. They drive bin counts and collection frequency, so they are worth
+              confirming against registry data.
+            </p>
+            <dl className="mt-6 grid gap-5 sm:grid-cols-3">
+              {population.map((p) => (
+                <div key={p.label} className="rounded-xl border border-ink-line bg-paper p-6 shadow-card">
+                  <dt className="font-serif text-[2.25rem] leading-none text-brand-700">{p.value}</dt>
+                  <dd className="mt-3 text-[0.875rem] text-ink-soft">{p.label}</dd>
+                  <dd className="mt-2">
+                    <Pill tone="brand">To confirm</Pill>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          <div className="space-y-6">
+            <Figure name="composting" className="aspect-[3/4] w-full" />
+            <Callout title="Emissions, for context" tone="brand">
+              <p className="text-sm">
+                Total campus emissions of <strong>18,763 tCO₂ a year</strong>, against{" "}
+                <strong>5,196 tCO₂</strong> sequestered annually by campus trees.
+              </p>
+              <ul className="mt-4 space-y-1.5">
+                {emissions.map((e) => (
+                  <li key={e.label} className="flex items-baseline justify-between gap-4 text-sm">
+                    <span className="text-ink-mute">{e.label}</span>
+                    <span className="font-serif text-ink">
+                      {e.value}
+                      <span className="ml-1 font-sans text-[0.6875rem] text-ink-faint">{e.unit}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </Callout>
+          </div>
+        </div>
+      </Section>
+
+      {/* Measured at the yard */}
+      <Section tone="paper">
+        <SectionHead
+          eyebrow="Measured at the segregation yard"
+          title="Packaging, kilogrammes per day"
+          lede="Recorded for the eight packaging categories a campus life cycle study could quantify. These are real measurements, not estimates."
+        />
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {dailyVolumes.map((v) => (
+            <div key={v.category} className="rounded-xl border border-ink-line bg-paper p-5 shadow-card">
+              <p className="font-serif text-[2rem] leading-none text-brand-700">
+                {v.kgPerDay}
+                <span className="ml-1.5 font-sans text-[0.6875rem] font-medium text-ink-faint">kg/day</span>
+              </p>
+              <p className="mt-3 text-[0.875rem] leading-snug text-ink">{v.category}</p>
+            </div>
+          ))}
+        </div>
+        <p className="mt-5 text-[0.875rem] text-ink-mute">
+          The yard sorts into {yard.categories} categories in total.{" "}
+          <Link href="/guidelines/where-it-goes" className="link-underline">
+            See the full route and category list
+          </Link>
+          .
+        </p>
+      </Section>
+
+      <Section tone="soft">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <SectionHead
+              eyebrow="Honesty"
+              title="What is not yet measured"
+              lede="The numbers a waste programme most needs, which this campus does not yet publish — listed so the gap is a stated commitment rather than a quiet omission."
+            />
+            <ul className="mt-10 space-y-3">
+              {notMeasured.map((n) => (
+                <li key={n} className="flex gap-3 text-[0.9375rem] leading-relaxed text-ink-soft">
+                  <span aria-hidden className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-bin-yellow" />
+                  {n}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="space-y-6">
+            <Callout title="How to close the gap" tone="moss">
+              <p>
+                Nearly all of them come from one thing: weigh and characterise a representative
+                day&rsquo;s waste, zone by zone, twice a semester, with student volunteers. For a
+                campus with this much engineering capacity it is an unusually tractable project.
+              </p>
+            </Callout>
+            <Callout title="Sources and dates" tone="brand">
+              <p>
+                Unless otherwise stated, figures come from the{" "}
+                <a href={CAP_URL} target="_blank" rel="noreferrer" className="link-underline">
+                  Climate Action Plan of IIT Madras (2022)
+                </a>
+                . Figures supplied by the Waste Management Committee without a published source are
+                marked <span className="rounded-sm bg-brand-50 px-1 text-[0.75rem] uppercase tracking-wide text-brand-700">to confirm</span>.
+              </p>
+
+            </Callout>
+          </div>
+        </div>
+      </Section>
+
+      <Section tone="paper">
+        <h2 className="display-3 mb-6 text-xl">Related</h2>
+        <NextSteps
+          items={[
+            { label: "Where it goes", href: "/guidelines/where-it-goes", blurb: "The yard, its categories and the daily volumes." },
+            { label: "Campaigns & drives", href: "/take-action/campaigns", blurb: "Including the proposed campus audit week." },
+            { label: "About the committee", href: "/about", blurb: "Who maintains this and how to reach them." },
+          ]}
+        />
+      </Section>
+    </>
+  );
+}

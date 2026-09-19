@@ -1,198 +1,220 @@
-// /** @format */
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { IoIosArrowDown } from "react-icons/io";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { nav, site } from "@/content/site";
 
-type NavItem = {
-  label: string;
-  link?: string;
-  children?: NavItem[];
-};
+export default function NavBar() {
+  const pathname = usePathname();
+  const [open, setOpen] = useState<string | null>(null);
+  const [drawer, setDrawer] = useState(false);
 
-const navItems: NavItem[] = [
-  {
-    label: "Home",
-    link: "/",
-  },
-  {
-    label: "Guidelines",
-    link: "#",
-    children: [
-      {
-        label: "General",
-        link: "/general",
-      },
-      {
-        label: "Academic Zone",
-        link: "/academic",
-      },
-      {
-        label: "Hostel Zone",
-        link: "/hostel",
-      },
-      {
-        label: "Residential Zone",
-        link: "/residence",
-      }
-    ],
-  },
-  {
-    label: "Events",
-    link: "#",
-    children: [
-      {
-        label: "Festivals",
-        link: "/research",
-      },
-      {
-        label: "Seminars",
-        link: "/research",
-      },
-    ]
-  },
-  {
-    label: "Lab waste",
-    link: "/about",
-  },
-  {
-    label: "Downloads",
-    link: "/download",
-  },
-  {
-    label: "About",
-    link: "/about",
-  },
-];
-
-export default function Navbar() {
-
-  const [isSideMenuOpen, setSideMenue] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
-    setSideMenue(true);
-  }, []);
+    setDrawer(false);
+    setOpen(null);
+  }, [pathname]);
 
-  if (!isSideMenuOpen) {
-    // render placeholder to keep SSR and client DOM consistent
-    return (
-      <nav className="p-4">
-      </nav>
-    );
-  }
-  return (
-    <div className="absolute mx-auto flex w-full max-w-6xl items-start justify-between px-4 py-5 text-sm z-20">
-      <Link href={'/'} className="flex items-center gap-8 hover:text-rose-500">
-        <div className="font-bold text-md xl:text-xl mt-2">
-          IIT Madras Waste Management Portal
-        </div>
-      </Link>
-      {/* right side  */}
-      <section className="flex items-center gap-8">
-        {isSideMenuOpen}
-        <div className="hidden md:flex items-center gap-4 transition-all">
-          {navItems.map((d, i) => (
-            <Link
-              key={i}
-              href={d.link ?? "#"}
-              className="relative group  px-2 py-3 transition-all "
-            >
-              <p className="flex cursor-pointer items-center gap-2 text-neutral-400 group-hover:text-black">
-                <span>{d.label}</span>
-                {d.children && (
-                  <IoIosArrowDown className=" rotate-180  transition-all group-hover:rotate-0" />
-                )}
-              </p>
+  useEffect(() => {
+    document.body.style.overflow = drawer ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [drawer]);
 
-              {/* dropdown */}
-              {d.children && (
-                <div className="absolute right-0 top-10 hidden w-auto flex-col gap-1 rounded-lg bg-white py-3 shadow-md  transition-all group-hover:flex ">
-                  {d.children.map((ch, i) => (
-                    <Link
-                      key={i}
-                      href={ch.link ?? "#"}
-                      className=" flex cursor-pointer items-center  py-1 pl-6 pr-8  text-neutral-400 hover:text-rose-500"
-                    >
-                      {/* item */}
-                      <span className="whitespace-nowrap   pl-3 ">
-                        {ch.label}
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </Link>
-          ))}
-        </div>
-      </section>
-    </div>
-  );
-}
-
-function MobileNav({ closeSideMenu }: { closeSideMenu: () => void }) {
-  return (
-    <div className="fixed left-0 top-0 flex h-full min-h-screen w-full justify-end bg-black/60 md:hidden">
-      <div className=" h-full w-[65%] bg-white px-4 py-4">
-        <div className=" flex flex-col text-base  gap-2 transition-all">
-          {navItems.map((d, i) => (
-            <SingleNavItem key={i} label={d.label} link={d.link}>
-              {d.children}
-            </SingleNavItem>
-          ))}
-        </div>
-
-        <section className="  flex flex-col gap-8 mt-4 items-center">
-          <button className="h-fit text-neutral-400 transition-all hover:text-black/90">
-            Login
-          </button>
-
-          <button className="w-full max-w-[200px] rounded-xl border-2 border-neutral-400 px-4 py-2 text-neutral-400 transition-all hover:border-black hover:text-black/90">
-            Register
-          </button>
-        </section>
-      </div>
-    </div>
-  );
-}
-
-function SingleNavItem(d: NavItem) {
-  const [isItemOpen, setItem] = useState(false);
-
-  function toggleItem() {
-    return setItem(!isItemOpen);
-  }
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <Link
-      onClick={toggleItem}
-      href={d.link ?? "#"}
-      className="relative   px-2 py-3 transition-all "
+    <header
+      className="sticky top-0 z-50 border-b border-ink-line bg-paper/95 backdrop-blur-md"
+      onMouseLeave={() => setOpen(null)}
     >
-      <p className="flex cursor-pointer items-center gap-2 text-neutral-400 group-hover:text-black ">
-        <span>{d.label}</span>
-        {d.children && (
-          <IoIosArrowDown
-            className={`text-xs transition-all  ${isItemOpen && " rotate-180"}`}
-          />
-        )}
-      </p>
+      <div className="wrap flex h-16 items-center justify-between gap-6">
+        <Link href="/" className="group flex items-center gap-3">
+          <Image src="/iitmlogo.svg" alt="" width={34} height={34} className="h-[34px] w-[34px] shrink-0" priority />
+          <span className="leading-tight">
+            <span className="block font-serif text-[1.25rem] leading-tight text-ink transition-colors group-hover:text-brand-700">
+              {site.name}
+            </span>
+            <span className="block font-sans text-[0.625rem] uppercase tracking-[0.15em] text-ink-faint">
+              IIT Madras
+            </span>
+          </span>
+        </Link>
 
-      {/* dropdown */}
-      {isItemOpen && d.children && (
-        <div className="flex flex-col gap-1 rounded-lg bg-white py-3 w-auto transition-all">
-          {d.children.map((ch, i) => (
-            <Link
-              key={i}
-              href={ch.link ?? "#"}
-              className="flex cursor-pointer items-center py-1 pl-6 pr-8 text-neutral-400 hover:text-black  "
+        <nav className="hidden items-center lg:flex" aria-label="Main">
+          {nav.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <div
+                key={item.label}
+                className="relative"
+                onMouseEnter={() => setOpen(item.children ? item.label : null)}
+              >
+                <Link
+                  href={item.href}
+                  aria-expanded={item.children ? open === item.label : undefined}
+                  className={`flex items-center gap-1.5 rounded-md px-3.5 py-2 text-[0.8125rem] font-medium transition-colors ${
+                    active ? "text-brand-800" : "text-ink-soft hover:text-brand-700"
+                  }`}
+                >
+                  {item.label}
+                  {item.children ? (
+                    <svg
+                      width="9"
+                      height="9"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      aria-hidden
+                      className={`transition-transform ${open === item.label ? "rotate-180" : ""}`}
+                    >
+                      <path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  ) : null}
+                </Link>
+                {active ? (
+                  <span aria-hidden className="absolute inset-x-3.5 -bottom-[1.05rem] h-[2px] rounded-full bg-brand-700" />
+                ) : null}
+              </div>
+            );
+          })}
+        </nav>
+
+        <button
+          type="button"
+          onClick={() => setDrawer((v) => !v)}
+          className="-mr-2 p-2 text-ink lg:hidden"
+          aria-expanded={drawer}
+          aria-label={drawer ? "Close menu" : "Open menu"}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
+            {drawer ? (
+              <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            ) : (
+              <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            )}
+          </svg>
+        </button>
+      </div>
+
+      {/* Desktop dropdown. Menus that carry descriptions get the full panel;
+          the rest get a plain link row. */}
+      {nav.map((item) => {
+        if (!item.children || open !== item.label) return null;
+        const detailed = item.children.some((c) => c.blurb);
+        return (
+          <div
+            key={item.label}
+            className="absolute inset-x-0 top-full hidden border-b border-ink-line bg-paper shadow-lift lg:block"
+          >
+            {detailed ? (
+              <div className="wrap grid gap-10 py-8 lg:grid-cols-[minmax(0,15rem)_1fr]">
+                <div className="border-r border-ink-line pr-8">
+                  <p className="eyebrow-accent">{item.label}</p>
+                  {item.blurb ? (
+                    <p className="mt-3 text-[0.9375rem] leading-relaxed text-ink-mute">
+                      {item.blurb}
+                    </p>
+                  ) : null}
+                </div>
+                <ul className="grid gap-x-8 gap-y-1 md:grid-cols-2 xl:grid-cols-3">
+                  {item.children.map((child) => (
+                    <li key={child.href}>
+                      <Link
+                        href={child.href}
+                        className="group block rounded-lg px-3.5 py-3 transition-colors hover:bg-brand-50"
+                      >
+                        <span className="block font-serif text-[1.125rem] leading-snug text-ink group-hover:text-brand-800">
+                          {child.label}
+                        </span>
+                        {child.blurb ? (
+                          <span className="mt-0.5 block text-[0.8125rem] leading-relaxed text-ink-mute">
+                            {child.blurb}
+                          </span>
+                        ) : null}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <div className="wrap py-7">
+                <ul className="flex flex-wrap gap-x-6 gap-y-1">
+                  {item.children.map((child) => (
+                    <li key={child.href}>
+                      <Link
+                        href={child.href}
+                        className="block rounded-lg px-3.5 py-2 text-[0.9375rem] font-medium text-ink-soft transition-colors hover:bg-brand-50 hover:text-brand-800"
+                      >
+                        {child.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        );
+      })}
+
+      {/* Mobile drawer */}
+      {drawer ? (
+        <div className="fixed inset-x-0 bottom-0 top-16 z-40 overflow-y-auto border-t border-ink-line bg-paper lg:hidden">
+          <nav className="wrap py-4" aria-label="Main">
+            <ul className="divide-y divide-ink-line">
+              {nav.map((item) => (
+                <li key={item.label} className="py-2.5">
+                  {item.children ? (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => setOpen(open === item.label ? null : item.label)}
+                        aria-expanded={open === item.label}
+                        className="flex w-full items-center justify-between py-1.5 text-left"
+                      >
+                        <span className="font-serif text-[1.375rem] text-ink">{item.label}</span>
+                        <svg
+                          width="13"
+                          height="13"
+                          viewBox="0 0 12 12"
+                          fill="none"
+                          aria-hidden
+                          className={`text-ink-faint transition-transform ${open === item.label ? "rotate-180" : ""}`}
+                        >
+                          <path d="M2.5 4.5L6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </button>
+                      {open === item.label ? (
+                        <ul className="mb-1 mt-1 space-y-0.5 border-l border-ink-line pl-4">
+                          {item.children.map((child) => (
+                            <li key={child.href}>
+                              <Link href={child.href} className="block py-1.5 text-[1rem] text-ink-soft">
+                                {child.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
+                    </>
+                  ) : (
+                    <Link href={item.href} className="block py-1.5 font-serif text-[1.375rem] text-ink">
+                      {item.label}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+            <a
+              href={`mailto:${site.email}`}
+              className="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-brand-700 px-5 py-3 text-sm font-medium text-paper"
             >
-              {/* item */}
-              <span className="whitespace-nowrap pl-3 ">{ch.label}</span>
-            </Link>
-          ))}
+              Write to us
+            </a>
+          </nav>
         </div>
-      )}
-    </Link>
+      ) : null}
+    </header>
   );
 }

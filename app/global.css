@@ -1,29 +1,105 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer base {
+  :root {
+    --font-display: "EB Garamond", "Iowan Old Style", "Palatino Linotype", Palatino,
+      Georgia, "Times New Roman", serif;
+    --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+      Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* Body copy is sans. */
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+    font-feature-settings: "kern", "liga", "calt";
+  }
+  /* Titles are EB Garamond. */
+  h1, h2, h3, h4, h5 {
+    @apply font-serif font-normal text-ink;
+  }
+  ::selection {
+    background-color: #E3C3C7;
+    color: #2F0C14;
+  }
+  :focus-visible {
+    outline: 2px solid #752335;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  hr { @apply border-ink-line; }
 }
 
-.linkStyle {
-  @apply hover:text-rose-500
+@layer components {
+  .wrap {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8 lg:px-10;
+  }
+  .eyebrow {
+    @apply text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-ink-mute;
+  }
+  .eyebrow-accent {
+    @apply text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-brand-600;
+  }
+
+  /* EB Garamond runs a touch small and light, so display sizes are
+     nudged up relative to a typical sans scale. */
+  .display-1 {
+    @apply font-serif text-[2.75rem] leading-[1.08] tracking-[-0.005em] text-ink sm:text-[3.5rem] lg:text-[4rem];
+  }
+  .display-2 {
+    @apply font-serif text-[2.125rem] leading-[1.12] tracking-[-0.004em] text-ink sm:text-[2.75rem];
+  }
+  .display-3 {
+    @apply font-serif text-[1.625rem] leading-[1.18] text-ink sm:text-[1.875rem];
+  }
+  .lede {
+    @apply text-[1.0625rem] leading-[1.65] text-ink-soft sm:text-[1.125rem];
+  }
+
+  .rule { @apply border-t border-ink-line; }
+  .link-underline {
+    @apply text-brand-700 underline decoration-brand-300 underline-offset-[3px] transition-colors hover:decoration-brand-700;
+  }
+  .card {
+    @apply rounded-xl border border-ink-line bg-paper shadow-card;
+  }
 }
 
-.prose img {
-  @apply rounded-md shadow-md mx-auto my-2;
+/* Long-form content — sans body, serif headings */
+.prose-iitm {
+  @apply max-w-none text-[1rem] leading-[1.7] text-ink-soft;
 }
+.prose-iitm h2 {
+  @apply mb-3 mt-12 font-serif text-[1.875rem] leading-tight text-ink;
+}
+.prose-iitm h3 {
+  @apply mb-2 mt-9 font-serif text-[1.5rem] leading-tight text-ink;
+}
+.prose-iitm h4 {
+  @apply mb-2 mt-8 font-sans text-[0.8125rem] font-semibold uppercase tracking-[0.12em] text-brand-700;
+}
+.prose-iitm p { @apply my-4; }
+.prose-iitm ul { @apply my-4 space-y-2; }
+.prose-iitm ul > li { @apply relative list-none pl-5; }
+.prose-iitm ul > li::before {
+  content: "";
+  @apply absolute left-0 top-[0.62em] h-1.5 w-1.5 rounded-full bg-brand-400;
+}
+.prose-iitm ol { @apply my-4 list-decimal space-y-2 pl-5 marker:text-sm marker:font-semibold marker:text-brand-600; }
+.prose-iitm a { @apply text-brand-700 underline decoration-brand-300 underline-offset-[3px] hover:decoration-brand-700; }
+.prose-iitm strong { @apply font-semibold text-ink; }
+.prose-iitm em { @apply italic; }
+.prose-iitm hr { @apply my-10 border-ink-line; }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-end-rgb));
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+@media print {
+  header, footer, .no-print { display: none !important; }
+  body { font-size: 11pt; }
 }
