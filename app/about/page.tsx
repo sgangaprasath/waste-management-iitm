@@ -29,17 +29,19 @@ const studentProjects = [
     ],
   },
   {
+    title: "Understanding collective campus residents' behaviour",
+    team: "Shakeel Ahmad Lone, Smruti B Bhatt, Tanmay Kishor Joshi, Vasanth Balaji",
+    body: "Surveyed 335 campus residents on what they throw away and where they think it comes from, then ran awareness programmes and a behavioural experiment — the self-service steel cups now at campus tea stalls. Their finding that awareness was already near-universal reframed the problem as one of alternatives, not education.",
+    reads: [
+      { label: "Progress & reporting", href: "/progress" },
+      { label: "Campaigns", href: "/take-action/campaigns" },
+    ],
+  },
+  {
     title: "IITM campus waste map",
     team: "Arnav, Aryan, Shivan, Sathya",
     body: "Built a building-by-building map of waste generation and collection points, with live data and a reporting route for problem zones. Their central finding — that the campus had no centralised digital record of its own waste data — is why the progress page is explicit about what is not yet measured.",
     reads: [{ label: "Progress & reporting", href: "/progress" }],
-  },
-  {
-    title: "Freecycle",
-    team: "Sharanya Garg, Adarsh Uday, Aditya Bhat",
-    body: "A campus platform for buying, selling and donating used items, built after a survey found 93% of students wanted one. It is live, and it is the reuse route this site points students to first.",
-    reads: [{ label: "Repurposing", href: "/repurposing" }],
-    external: { label: "iitmfreecycle.netlify.app", href: "https://iitmfreecycle.netlify.app" },
   },
 ];
 
@@ -157,7 +159,7 @@ export default function AboutPage() {
         <SectionHead
           eyebrow="Student projects"
           title="Where much of this came from"
-          lede="Three student project teams did the fieldwork this site rests on — interviews with the people who run campus waste, days at the segregation yard, and a platform that now runs."
+          lede="Student project teams did the fieldwork this site rests on — interviews with the people who run campus waste, days at the segregation yard, and a platform that now runs."
         />
         <div className="mt-10 grid gap-5 lg:grid-cols-3">
           {studentProjects.map((sp) => (
@@ -171,19 +173,6 @@ export default function AboutPage() {
                     {r.label} &rarr;
                   </Link>
                 ))}
-                {sp.external ? (
-                  <a
-                    href={sp.external.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-[0.8125rem] font-medium text-brand-700 hover:underline"
-                  >
-                    {sp.external.label}
-                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden>
-                      <path d="M5 11L11 5M11 5H6M11 5v5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </a>
-                ) : null}
               </div>
             </article>
           ))}

@@ -3,7 +3,7 @@ import Link from "next/link";
 import Figure from "@/components/figure";
 import Icon from "@/components/icons";
 import { PageHeader, Section, SectionHead, Button } from "@/components/ui";
-import { getStarted, audiences } from "@/content/takeAction";
+import { getStarted, audiences, campaigns } from "@/content/takeAction";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -81,37 +81,31 @@ export default function TakeActionPage() {
         <div className="grid gap-10 lg:grid-cols-[minmax(0,22rem)_1fr] lg:gap-16">
           <Figure name="takeAction" className="aspect-[4/5] w-full" />
           <div>
-            <SectionHead eyebrow="Beyond your own bin" title="Campaigns and drives" />
-            <div className="mt-8">
-              <Link
-                href="/take-action/campaigns"
-                className="group rounded-xl border border-ink-line bg-paper p-6 shadow-card transition-all hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-lift"
-              >
-                <Icon name="people" size={26} className="text-brand-700" />
-                <h3 className="mt-3 font-serif text-[1.5rem] text-ink group-hover:text-brand-700">
-                  Campaigns & drives
-                </h3>
-                <p className="mt-1.5 text-[0.875rem] leading-relaxed text-ink-mute">
-                  Punch the Plastic, Swachhta Hi Seva, audit weeks and the semester-end handover.
-                </p>
-              </Link>
-            </div>
+            <SectionHead
+              eyebrow="Beyond your own bin"
+              title="Campaigns and drives"
+              lede="Campus-wide efforts that need people in every hostel, department and block — not just a central team."
+            />
 
-            <div className="mt-8 rounded-xl border border-ink-line bg-paper-soft p-6">
-              <p className="max-w-xl text-[0.9375rem] leading-relaxed text-ink-soft">
-                Most of what this site marks <em>proposed</em> needs a few committed people rather
-                than a budget &mdash; a shelf, a fixed date, a sign, and somebody responsible for it
-                for a semester.
-              </p>
-              <div className="mt-5">
-                <Button href={`mailto:${site.email}`} external>
-                  Write to us
-                </Button>
-              </div>
+            <ul className="mt-8 divide-y divide-ink-hair border-y border-ink-hair">
+              {campaigns.map((c) => (
+                <li key={c.title} className="flex flex-wrap items-baseline gap-x-4 gap-y-1 py-4">
+                  <span className="font-serif text-[1.25rem] leading-snug text-ink">{c.title}</span>
+                  <span className="text-[0.8125rem] text-ink-faint">{c.when}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Button href="/take-action/campaigns">See what each one does</Button>
+              <Button href={`mailto:${site.email}`} variant="outline" external>
+                Bring one to your block
+              </Button>
             </div>
           </div>
         </div>
       </Section>
+
     </>
   );
 }

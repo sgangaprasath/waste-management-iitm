@@ -99,13 +99,13 @@ const paths: Record<IconKey, JSX.Element> = {
   ),
   cycle: (
     <>
-      <path d="M8.6 4.8l1.6-2.7a2 2 0 013.5 0l2 3.4" />
-      <path d="M15.6 3.6l.1 2.9 2.9-.2" />
-      <path d="M19.2 9.2l1.6 2.8a2 2 0 01-1.7 3h-4" />
-      <path d="M16.6 12.6l-1.5 2.5 2.4 1.6" />
-      <path d="M9.1 15h-3.2a2 2 0 01-1.8-3l2-3.4" />
-      <path d="M7.5 11.6l-3 .6.4 2.8" />
-      <path d="M9.1 15l3 5.2h4.4" />
+      {/* Universal recycling symbol: three arrows around a triangle. */}
+      <path d="M13.32 7.08L17.27 13.92" />
+      <path d="M14.76 12.48L17.27 13.92L17.27 11.03" />
+      <path d="M15.95 16.20L8.05 16.20" />
+      <path d="M10.55 14.75L8.05 16.20L10.55 17.65" />
+      <path d="M6.73 13.92L10.68 7.08" />
+      <path d="M10.69 9.97L10.68 7.08L8.18 8.52" />
     </>
   ),
 

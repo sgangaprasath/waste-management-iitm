@@ -35,8 +35,8 @@ export const getStarted: { n: string; icon: IconKey; title: string; body: string
   {
     n: "03",
     icon: "bottle",
-    title: "Buy used, carry your own",
-    body: "Check Freecycle before buying new. A steel tumbler and a cloth bag do the rest.",
+    title: "Carry your own",
+    body: "A steel tumbler, a cloth bag and a set of containers. Buy used before buying new.",
     href: "/repurposing",
   },
   {
@@ -78,7 +78,6 @@ export const audiences: Audience[] = [
       { icon: "drop", title: "Rinse before blue", body: "Three seconds under the tap. Plain water is enough.", effort: 1 },
       { icon: "bottle", title: "Steel tumbler and cloth bag", body: "Covers the canteen, mess, shops and every event.", effort: 1 },
       { icon: "plate", title: "Take only what you'll eat", body: "Plate scrape is the hostels' largest single stream.", effort: 1 },
-      { icon: "cycle", title: "List it on Freecycle", body: "Sell, pass on or donate what you no longer need, campus-wide.", effort: 1 },
       { icon: "box", title: "Hand over at semester end", body: "Mattresses, buckets, cycles and books to the depot.", effort: 2 },
       { icon: "cup", title: "Collect wrappers separately", body: "Clean and dry, for the Punch the Plastic point.", effort: 2 },
       { icon: "people", title: "Be your wing's contact", body: "One informed person changes the behaviour of forty.", effort: 3 },
@@ -94,7 +93,7 @@ export const audiences: Audience[] = [
           "Flatten cartons, take to the flat-pack corner",
           "Separate bag for multilayered wrappers",
           "Batteries and chargers to the e-waste point",
-          "Anything still usable listed on Freecycle, not binned",
+          "Anything still usable passed on, not binned",
         ],
       },
       {
@@ -184,7 +183,7 @@ export const audiences: Audience[] = [
       { icon: "cup", title: "Never pour oil down the drain", body: "Collect it in a sealed bottle for the collection point.", effort: 1 },
       { icon: "leaf", title: "Compost at home", body: "A bin or a shared pit — no collection, no transport.", effort: 2 },
       { icon: "battery", title: "Hold the hazardous things", body: "Medicines, batteries, paint and CFLs for the monthly drive.", effort: 2 },
-      { icon: "cycle", title: "Use the swap shelf and Freecycle", body: "Pass on working clothing, kitchenware, toys, books and furniture.", effort: 2 },
+      { icon: "cycle", title: "Use the swap shelf", body: "Pass on working clothing, kitchenware, toys, books and furniture.", effort: 2 },
       { icon: "people", title: "Host a block session", body: "Twenty minutes with neighbours beats a year of notices.", effort: 3 },
       { icon: "clipboard", title: "Join the zone committee", body: "Residents decide bin placement, timing and drives.", effort: 3 },
     ],
@@ -289,18 +288,22 @@ export type Campaign = {
 
 export const campaigns: Campaign[] = [
   {
-    title: "Freecycle",
-    when: "Running now",
-    status: "running",
-    href: "https://iitmfreecycle.netlify.app",
-    linkLabel: "iitmfreecycle.netlify.app",
-    body: "Buy, sell or donate used items across the whole campus instead of within one hostel\'s WhatsApp group. Built by students; cycles, furniture, electronics and study materials are the main categories.",
-  },
-  {
     title: "Campus waste map",
     when: "Built 2024, being extended",
     status: "running",
     body: "A building-by-building map of where waste is generated on campus, with a reporting route for overflowing or missing bins. It exists because no centralised record of campus waste data did.",
+  },
+  {
+    title: "Steel cups at campus tea stalls",
+    when: "Running at Chai Waale",
+    status: "running",
+    body: "Self-service steel cups replacing paper cups at campus tea stalls. Nearly every student surveyed already knew paper cups are plastic-lined — the cups removed the excuse.",
+  },
+  {
+    title: "Eco Ganesha workshop",
+    when: "Ahead of the festival",
+    status: "running",
+    body: "Making unpainted clay idols that dissolve without leaving plaster and paint behind. Places are limited and fill quickly.",
   },
   {
     title: "Punch the Plastic",

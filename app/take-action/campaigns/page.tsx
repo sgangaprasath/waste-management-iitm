@@ -62,7 +62,16 @@ export default function CampaignsPage() {
             </ul>
           </div>
           <div className="space-y-6">
-            <Figure name="takeAction" className="aspect-[3/4] w-full" />
+            <Figure
+              name="cleanUpDrive"
+              className="aspect-[4/3] w-full"
+              caption="A Swachhata Hi Seva cleaning drive in the residential zone."
+            />
+            <Figure
+              name="wasteMap"
+              className="aspect-[16/10] w-full"
+              caption="The campus waste map, built building by building."
+            />
             <Callout title="Punch the Plastic" tone="moss">
               <p>
                 Run by the institute&rsquo;s sustainable campus collective: clean, dry plastic

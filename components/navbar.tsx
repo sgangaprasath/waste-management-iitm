@@ -27,10 +27,11 @@ export default function NavBar() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header
-      className="sticky top-0 z-50 border-b border-ink-line bg-paper/95 backdrop-blur-md"
-      onMouseLeave={() => setOpen(null)}
-    >
+    <>
+      <header
+        className="sticky top-0 z-50 border-b border-ink-line bg-paper/95 backdrop-blur-md"
+        onMouseLeave={() => setOpen(null)}
+      >
       <div className="wrap flex h-16 items-center justify-between gap-6">
         <Link href="/" className="group flex items-center gap-3">
           <Image src="/iitmlogo.svg" alt="" width={34} height={34} className="h-[34px] w-[34px] shrink-0" priority />
@@ -159,9 +160,18 @@ export default function NavBar() {
         );
       })}
 
-      {/* Mobile drawer */}
+      </header>
+
+      {/* Mobile drawer. Rendered outside <header> on purpose: the header's
+          backdrop-blur creates a containing block, which would otherwise
+          collapse this fixed panel to nothing. */}
       {drawer ? (
-        <div className="fixed inset-x-0 bottom-0 top-16 z-40 overflow-y-auto border-t border-ink-line bg-paper lg:hidden">
+        <div
+          className="fixed inset-0 top-16 z-40 overflow-y-auto overscroll-contain bg-paper lg:hidden"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setDrawer(false);
+          }}
+        >
           <nav className="wrap py-4" aria-label="Main">
             <ul className="divide-y divide-ink-line">
               {nav.map((item) => (
@@ -215,6 +225,6 @@ export default function NavBar() {
           </nav>
         </div>
       ) : null}
-    </header>
+    </>
   );
 }

@@ -21,14 +21,6 @@ export type Programme = {
 
 export const programmes: Programme[] = [
   {
-    title: "Freecycle",
-    who: "All zones",
-    status: "running",
-    href: "https://iitmfreecycle.netlify.app",
-    linkLabel: "iitmfreecycle.netlify.app",
-    body: "The campus platform for buying, selling and donating used items. Built by students after a survey found 93% of respondents wanted one, it replaces the scattered hostel WhatsApp groups that limited every sale to one building. Cycles, furniture, electronics and study materials are the main categories.",
-  },
-  {
     title: "Book bank",
     who: "All zones",
     status: "running",
@@ -85,7 +77,6 @@ export const zoneRepurposing: ZoneRepurposing[] = [
     name: "Hostel zone",
     lede: "Every year the hostels throw away a complete set of everything a first-year needs to buy.",
     ideas: [
-      "List what you are leaving behind on Freecycle before you pack.",
       "A staffed handover depot in the final fortnight of each semester.",
       "Tag, hold, repair and re-issue abandoned cycles.",
       "A book bank shelf in every hostel.",
@@ -103,7 +94,7 @@ export const zoneRepurposing: ZoneRepurposing[] = [
     name: "Residential zone",
     lede: "A timing problem: the furniture leaving one quarter is what the next family needs.",
     ideas: [
-      "A sheltered swap shelf at each block, and Freecycle for anything worth listing.",
+      "A sheltered swap shelf at each block for anything worth passing on.",
       "Put outgoing and incoming residents in touch before the move.",
       "Compost at home — no collection, no transport.",
       "Wearable clothing to donation; worn cotton becomes cleaning cloth.",

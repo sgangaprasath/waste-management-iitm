@@ -2,7 +2,14 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { binIndex, searchIndex, commonItems, type IndexEntry } from "@/content/binIndex";
+import {
+  binIndex,
+  searchIndex,
+  commonItems,
+  indexGroups,
+  itemsInGroup,
+  type IndexEntry,
+} from "@/content/binIndex";
 import { binByKey } from "@/content/bins";
 
 const zoneLabel: Record<IndexEntry["zone"], string> = {
@@ -59,7 +66,9 @@ function Result({ entry }: { entry: IndexEntry }) {
 
 export default function BinFinder() {
   const [q, setQ] = useState("");
+  const [group, setGroup] = useState<string | null>(null);
   const results = useMemo(() => searchIndex(q), [q]);
+  const browsing = useMemo(() => (group ? itemsInGroup(group) : []), [group]);
   const typed = q.trim().length >= 2;
 
   return (
@@ -80,7 +89,10 @@ export default function BinFinder() {
         <input
           type="search"
           value={q}
-          onChange={(e) => setQ(e.target.value)}
+          onChange={(e) => {
+            setQ(e.target.value);
+            if (e.target.value) setGroup(null);
+          }}
           placeholder="What are you holding? Try “chip packet” or “battery”"
           aria-label="Search for an item"
           autoComplete="off"
@@ -100,7 +112,7 @@ export default function BinFinder() {
         ) : null}
       </div>
 
-      {/* Suggestions */}
+      {/* Suggestions and category browsing */}
       {!typed ? (
         <div className="mt-6">
           <p className="eyebrow">Commonly asked</p>
@@ -117,9 +129,63 @@ export default function BinFinder() {
               </li>
             ))}
           </ul>
-          <p className="mt-6 text-[0.875rem] text-ink-mute">
-            {binIndex.length} items indexed, drawn from the zone guidelines.
-          </p>
+
+          <p className="eyebrow mt-8">Or browse by category</p>
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {indexGroups.map((g) => (
+              <li key={g}>
+                <button
+                  type="button"
+                  onClick={() => setGroup(group === g ? null : g)}
+                  aria-pressed={group === g}
+                  className={`rounded-full border px-3.5 py-1.5 text-[0.875rem] transition-colors ${
+                    group === g
+                      ? "border-brand-600 bg-brand-50 text-brand-800"
+                      : "border-ink-line bg-paper text-ink-soft hover:border-brand-400 hover:text-brand-700"
+                  }`}
+                >
+                  {g}
+                </button>
+              </li>
+            ))}
+          </ul>
+
+          {group ? (
+            <>
+              <p className="mt-6 text-[0.875rem] text-ink-mute">
+                {browsing.length} items in {group}
+              </p>
+              <ul className="mt-3 divide-y divide-ink-hair overflow-hidden rounded-xl border border-ink-line bg-paper shadow-card">
+                {browsing.map((e) => (
+                  <li key={e.item} className="flex items-start justify-between gap-4 px-5 py-3">
+                    <div>
+                      <p className="text-[0.9375rem] text-ink">{e.item}</p>
+                      {e.detail ? (
+                        <p className="mt-0.5 text-[0.8125rem] leading-snug text-ink-mute">
+                          {e.detail}
+                        </p>
+                      ) : null}
+                    </div>
+                    <span className="flex shrink-0 items-center gap-2 pt-0.5">
+                      <span
+                        aria-hidden
+                        className="h-3 w-3 rounded-full ring-1 ring-inset ring-black/15"
+                        style={{ backgroundColor: binByKey[e.bin].hex }}
+                      />
+                      <span className="text-[0.75rem] uppercase tracking-[0.08em] text-ink-faint">
+                        {binByKey[e.bin].name}
+                      </span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <p className="mt-6 text-[0.875rem] text-ink-mute">
+              {binIndex.length} items indexed, drawn from the zone guidelines and the campus
+              dictionary.
+            </p>
+          )}
         </div>
       ) : null}
 
@@ -146,7 +212,7 @@ export default function BinFinder() {
               add it.
             </p>
             <a
-              href="mailto:waste@iitm.ac.in"
+              href="mailto:waste@smail.iitm.ac.in"
               className="mt-4 inline-flex items-center rounded-lg bg-brand-700 px-4 py-2 text-sm font-medium text-paper transition-colors hover:bg-brand-800"
             >
               Tell us what is missing

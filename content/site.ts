@@ -12,7 +12,7 @@ export const site = {
   shortName: "IIT Madras",
   tagline:
     "Guidelines, recovery pathways and campus action for a zero-landfill institute.",
-  email: "waste@iitm.ac.in",
+  email: "waste@smail.iitm.ac.in",
   address: ["Waste Management Committee", "IIT Madras, Chennai", "Tamil Nadu 600036"],
 };
 
@@ -99,7 +99,7 @@ export const nav: NavItem[] = [
       {
         label: "Campaigns",
         href: "/take-action/campaigns",
-        blurb: "Freecycle, Punch the Plastic and the campus waste map.",
+        blurb: "Punch the Plastic, the campus waste map and the clean-up drives.",
       },
     ],
   },

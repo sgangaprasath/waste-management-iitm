@@ -74,17 +74,6 @@ export default function GuidelinesPage() {
 
           <div className="space-y-6">
             <Figure name="campusPoster" className="aspect-[4/3] w-full" rounded="rounded-xl" />
-            <Callout title="Three things the campus keeps getting wrong" tone="plain">
-              <ul className="mt-1 space-y-1.5">
-                <li>Waste handed over unsegregated, so the sort happens twice or not at all.</li>
-                <li>Construction and demolition debris left with general waste.</li>
-                <li>Abandoned cycles accumulating with no route to recovery.</li>
-              </ul>
-              <p className="mt-3 text-[0.875rem]">
-                Identified by a student survey of neglected waste zones across campus.
-              </p>
-            </Callout>
-
             <Callout title="When you are not sure" tone="warn">
               Put it in <strong>red</strong>. A lost recyclable costs little; a contaminant can cost
               the whole batch. The exception is anything hazardous or electronic &mdash; hold those
@@ -94,9 +83,45 @@ export default function GuidelinesPage() {
         </div>
       </Section>
 
+      {/* What keeps going wrong — photographed on this campus */}
       <Section tone="soft">
+        <SectionHead
+          eyebrow="Observed on campus"
+          title="Three things that keep going wrong"
+          lede="Documented by a student survey of neglected waste zones. None of them is a shortage of bins."
+        />
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          {[
+            {
+              name: "unsegregatedWaste" as const,
+              title: "Handed over unsegregated",
+              body: "The sort then happens twice, or not at all. Collectors do not re-sort what arrives mixed.",
+            },
+            {
+              name: "constructionDebris" as const,
+              title: "Debris left with general waste",
+              body: "Construction and demolition waste needs its own lifting — it blocks the ordinary stream.",
+            },
+            {
+              name: "abandonedCycles" as const,
+              title: "Cycles left to rust",
+              body: "Abandoned around hostels with no route to recovery, though most are repairable.",
+            },
+          ].map((c) => (
+            <figure key={c.name} className="overflow-hidden rounded-xl border border-ink-line bg-paper shadow-card">
+              <Figure name={c.name} className="aspect-[4/3] w-full" rounded="rounded-none" />
+              <figcaption className="p-5">
+                <p className="font-serif text-[1.25rem] leading-snug text-ink">{c.title}</p>
+                <p className="mt-1.5 text-[0.9375rem] leading-relaxed text-ink-mute">{c.body}</p>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </Section>
+
+      <Section tone="paper">
         <div className="mb-14">
-          <BinFinderPanel tone="paper" />
+          <BinFinderPanel tone="soft" />
         </div>
         <SectionHead
           eyebrow="The containers"
@@ -108,7 +133,7 @@ export default function GuidelinesPage() {
         </div>
       </Section>
 
-      <Section tone="paper">
+      <Section tone="soft">
         <SectionHead
           eyebrow="Zone guidance"
           title="Now find your part of the campus"

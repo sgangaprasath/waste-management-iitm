@@ -12,30 +12,30 @@ recycling: {
 },
 ```
 
-## Slots still on stand-in images
+## Where the photographs came from
 
-These three currently show a duplicate of another photo. They were created for
-the student decks and are the highest priority.
+All campus photographs are from the student project decks and are credited in
+`content/images.ts` via the `credit` field.
 
-| Slot | Wants | Source |
-|------|-------|--------|
-| `segregationYard` | Manual sorting at the yard; the baled categories | Group 3 deck, slides 6, 10, 11, 12 |
-| `wasteMap` | The campus waste map itself | Group 1 deck, "Website for Campus Waste Map" |
-| `freecycle` | The Freecycle platform in use | Group 4 deck, live-demo slide |
+| File | From |
+|------|------|
+| `segregation-yard.jpg`, `yard-baling.jpg`, `yard-sorted.jpg`, `yard-records.jpg`, `vermicompost.jpg` | Catalog Flow of Packaging Materials (Group 3) |
+| `waste-map.jpg`, `abandoned-cycles.jpg`, `construction-debris.jpg`, `unsegregated-waste.jpg` | IITM Campus Waste Map (Group 1) |
+| `clean-up-drive.jpg`, `steel-cups.jpg`, `campus-survey.jpg` | Understanding Collective Campus Residents Behaviour (Group 2) |
 
-## Slots worth adding a photo to
+Two of these are low resolution because the deck embedded them small:
+`waste-map.jpg` (366×199) and `abandoned-cycles.jpg` (408×376). They are used at
+small display sizes, but a higher-resolution original would be worth having.
 
-These pages carry the most text and the fewest pictures. A single good
-photograph on each would do more than any amount of editing.
+## Slots that would still benefit from a photograph
 
-| Page | Suggested slot | What the shot should show |
-|------|----------------|---------------------------|
-| `/guidelines/academic` | a second zone image | A three-bin station outside a lecture hall or lab |
-| `/guidelines/residential` | a second zone image | Door-to-door collection, or a community compost pit |
-| `/guidelines/hostel` | a second zone image | A mess plate-scrape station at peak time |
-| `/progress` | a header image | The 4 MLD sewage treatment plant, or the biogas digesters |
-| `/about` | committee image | The committee, or a campus clean-up drive |
-| `/guidelines/lab-waste` | in-situ image | A labelled yellow container beside a working bench |
+| Page | What the shot should show |
+|------|---------------------------|
+| `/guidelines/academic` | A three-bin station outside a lecture hall or lab |
+| `/guidelines/hostel` | A mess plate-scrape station at peak time |
+| `/guidelines/residential` | Door-to-door collection, or a community compost pit |
+| `/guidelines/lab-waste` | A labelled yellow container beside a working bench |
+| `/about` | The committee, or a campus clean-up drive |
 
 ## Campus photography beats stock
 
@@ -59,4 +59,4 @@ hosts, so a full URL can be used as `src` directly. Self-hosting is preferred.
 | `campus-banyan.jpg` | Cropped from `CoverMain.jpg` | — | — |
 | `posters/*.png` | Waste Management Committee | Institute | pre-existing |
 | `compost.jpg`, `eWaste.jpg`, `labwaste.jpg`, `plasticbottle.jpg`, `upcycling.jpg`, `volunteer.jpg` | Pixabay | Pixabay licence | added by hand |
-| `segregation-yard.jpg`, `waste-map.jpg`, `freecycle.jpg` | **stand-ins — replace** | — | — |
+| Campus photographs (see table above) | Student project decks | Institute | added from decks |

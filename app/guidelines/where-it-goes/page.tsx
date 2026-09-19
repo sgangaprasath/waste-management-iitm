@@ -76,7 +76,16 @@ export default function WhereItGoesPage() {
           </div>
 
           <div className="space-y-5">
-            <Figure name="segregationYard" className="aspect-[4/5] w-full" />
+            <Figure
+              name="segregationYard"
+              className="aspect-[3/4] w-full"
+              caption="Sorted material bagged at the yard, awaiting a tender."
+            />
+            <Figure
+              name="yardRecords"
+              className="aspect-[4/3] w-full"
+              caption="The day's weights, recorded by hand."
+            />
             <Callout tone="plain">
               Because categories follow what a vendor will pay rather than what the material is,
               two items made of the same polymer can end up in different piles &mdash; and an item
@@ -112,8 +121,17 @@ export default function WhereItGoesPage() {
         </div>
       </Section>
 
+      {/* Yard in pictures */}
+      <Section tone="soft" tight>
+        <div className="grid gap-5 sm:grid-cols-3">
+          <Figure name="yardBaling" className="aspect-[3/4] w-full" caption="The baling press." />
+          <Figure name="yardSorted" className="aspect-[3/4] w-full" caption="Rinsed containers, sorted by category." />
+          <Figure name="vermicompost" className="aspect-[3/4] w-full" caption="The vermicompost beds — cut vegetable peel becomes manure for campus gardening." />
+        </div>
+      </Section>
+
       {/* Volumes */}
-      <Section tone="soft">
+      <Section tone="paper">
         <SectionHead
           eyebrow="Measured"
           title="What the campus actually produces"
@@ -157,7 +175,7 @@ export default function WhereItGoesPage() {
       </Section>
 
       {/* Related */}
-      <Section tone="paper">
+      <Section tone="soft">
         <div>
           <h3 className="display-3 mb-6 text-xl">Related</h3>
           <NextSteps
