@@ -1,7 +1,9 @@
 import type { BinKey } from "./bins";
+import type { IconKey } from "@/components/icons";
 
 export type Stream = {
   name: string;
+  icon: IconKey;
   materials: string;
   prepare: string;
   fate: string;
@@ -12,6 +14,7 @@ export type Stream = {
 export const streams: Stream[] = [
   {
     name: "Paper and card",
+    icon: "document",
     materials: "Scripts, notebooks, newspaper, cartons, office paper.",
     prepare: "Keep dry and free of food. Flatten cartons.",
     fate: "Baled and sold to authorised mills — the campus's highest-value stream.",
@@ -20,6 +23,7 @@ export const streams: Stream[] = [
   },
   {
     name: "Rigid plastics",
+    icon: "bottle",
     materials: "PET bottles, milk and shampoo bottles, buckets, reagent bottles.",
     prepare: "Rinse with plain water, dry, cap on. Don't crush — sorters read the shape.",
     fate: "Granulated into fibre, sheet and moulded goods.",
@@ -28,6 +32,7 @@ export const streams: Stream[] = [
   },
   {
     name: "Metals",
+    icon: "tool",
     materials: "Cans, foil trays, staples, cycle parts, lab stands, scrap.",
     prepare: "Empty and rinse food cans.",
     fate: "Sold to scrap dealers. Infinitely recyclable, most valuable by weight.",
@@ -35,15 +40,8 @@ export const streams: Stream[] = [
     recoverable: "high",
   },
   {
-    name: "Organics",
-    materials: "Mess and kitchen waste, plate scrape, garden trimmings.",
-    prepare: "Drain liquids. No plastic, cutlery or wrappers.",
-    fate: "≈800 kg a day to the campus biogas digesters; 150–200 kg composted.",
-    bin: "green",
-    recoverable: "high",
-  },
-  {
     name: "E-waste",
+    icon: "bolt",
     materials: "Batteries, cables, boards, instruments, lighting, IT equipment.",
     prepare: "Remove batteries, wipe data-bearing devices.",
     fate: "Certified recyclers under the E-Waste Rules.",
@@ -52,6 +50,7 @@ export const streams: Stream[] = [
   },
   {
     name: "Glass — intact",
+    icon: "cup",
     materials: "Bottles and jars from kitchens, messes, the shopping complex.",
     prepare: "Rinse. Keep whole — broken glass is a hazard to handlers.",
     fate: "Returned to bottlers, or sent for cullet recovery.",
@@ -60,6 +59,7 @@ export const streams: Stream[] = [
   },
   {
     name: "Plastic film — single layer",
+    icon: "box",
     materials: "Carry bags, bubble wrap, clean covers.",
     prepare: "Shake out, keep dry, bundle rather than loose.",
     fate: "Accepted only when clean and unmixed; otherwise a reject.",
@@ -68,6 +68,7 @@ export const streams: Stream[] = [
   },
   {
     name: "Multilayered packaging",
+    icon: "warning",
     materials: "Chip and biscuit packets, chocolate wrappers, sachets, cartons.",
     prepare: "Keep dry and hand to a Punch the Plastic point.",
     fate: "Not conventionally recyclable. Routed to pyrolysis partners.",

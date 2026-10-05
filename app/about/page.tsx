@@ -10,41 +10,6 @@ export const metadata: Metadata = {
     "The Waste Management Committee of IIT Madras — its mandate, its members, and how the campus waste programme is run.",
 };
 
-const members = [
-  { name: "Prof. Indumathi Nambi", role: "Waste Management Committee" },
-  { name: "Prof. Susy Varghese", role: "Waste Management Committee" },
-  { name: "Dr. S. Ganga Prasath", role: "Waste Management Committee" },
-  { name: "Ms. Srividhya", role: "Waste Management Committee" },
-  { name: "Ms. Vysakhi", role: "Waste Management Committee" },
-];
-
-const studentProjects = [
-  {
-    title: "Catalog flow of packaging materials",
-    team: "Ananya V, Harshit Moondra, Visali Shanmugam",
-    body: "Traced every common packaging material through the residential, hostel and academic zones, ran a cradle-to-grave life cycle assessment on the eight quantifiable categories, and evaluated sustainable alternatives available in the Indian market. Much of the Where it goes page comes from this study.",
-    reads: [
-      { label: "Where it goes", href: "/guidelines/where-it-goes" },
-      { label: "Packaging alternatives", href: "/recycling" },
-    ],
-  },
-  {
-    title: "Understanding collective campus residents' behaviour",
-    team: "Shakeel Ahmad Lone, Smruti B Bhatt, Tanmay Kishor Joshi, Vasanth Balaji",
-    body: "Surveyed 335 campus residents on what they throw away and where they think it comes from, then ran awareness programmes and a behavioural experiment — the self-service steel cups now at campus tea stalls. Their finding that awareness was already near-universal reframed the problem as one of alternatives, not education.",
-    reads: [
-      { label: "Progress & reporting", href: "/progress" },
-      { label: "Campaigns", href: "/take-action/campaigns" },
-    ],
-  },
-  {
-    title: "IITM campus waste map",
-    team: "Arnav, Aryan, Shivan, Sathya",
-    body: "Built a building-by-building map of waste generation and collection points, with live data and a reporting route for problem zones. Their central finding — that the campus had no centralised digital record of its own waste data — is why the progress page is explicit about what is not yet measured.",
-    reads: [{ label: "Progress & reporting", href: "/progress" }],
-  },
-];
-
 const partners = [
   {
     name: "Engineering Unit",
@@ -79,6 +44,7 @@ export default function AboutPage() {
     <>
       <PageHeader
         eyebrow="About"
+        icon="info"
         title="The Waste Management Committee"
         lede="The committee exists to make one thing true: that anyone who wants to dispose of something correctly can find out how in under a minute, and then actually do it."
         crumbs={[{ label: "About", href: "/about" }]}
@@ -144,44 +110,9 @@ export default function AboutPage() {
       </Section>
 
       <Section tone="soft">
-        <SectionHead eyebrow="Members" title="The committee" />
-        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {members.map((m) => (
-            <li key={m.name} className="rounded-xl border border-ink-line bg-paper p-6 shadow-card">
-              <p className="font-serif text-[1.25rem] text-ink">{m.name}</p>
-              <p className="mt-1 text-[0.8125rem] text-ink-mute">{m.role}</p>
-            </li>
-          ))}
-        </ul>
-      </Section>
-
-      <Section tone="paper">
-        <SectionHead
-          eyebrow="Student projects"
-          title="Where much of this came from"
-          lede="Student project teams did the fieldwork this site rests on — interviews with the people who run campus waste, days at the segregation yard, and a platform that now runs."
-        />
-        <div className="mt-10 grid gap-5 lg:grid-cols-3">
-          {studentProjects.map((sp) => (
-            <article key={sp.title} className="flex flex-col rounded-xl border border-ink-line bg-paper p-6 shadow-card">
-              <h3 className="font-serif text-[1.375rem] leading-tight text-ink">{sp.title}</h3>
-              <p className="mt-1.5 text-[0.8125rem] text-ink-faint">{sp.team}</p>
-              <p className="mt-3 flex-1 text-[0.9375rem] leading-relaxed text-ink-soft">{sp.body}</p>
-              <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-ink-hair pt-4">
-                {sp.reads.map((r) => (
-                  <Link key={r.href} href={r.href} className="text-[0.8125rem] font-medium text-brand-700 hover:underline">
-                    {r.label} &rarr;
-                  </Link>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
-      </Section>
-
-      <Section tone="soft">
         <SectionHead
           eyebrow="Partners"
+          icon="building"
           title="Who else this depends on"
           lede="No committee runs a campus waste programme on its own. These are the groups whose work this site describes."
         />
@@ -211,9 +142,9 @@ export default function AboutPage() {
           <h3 className="display-3 mb-6 text-xl">Elsewhere</h3>
           <NextSteps
             items={[
-              { label: "Progress & reporting", href: "/progress", blurb: "The figures, their sources and the gaps." },
-              { label: "Climate Action Plan", href: CAP_URL, blurb: "The institute's plan for carbon neutrality by 2050." },
-              { label: "Resources & downloads", href: "/downloads", blurb: "Posters and signage ready to print." },
+              { icon: "chart", label: "Progress & reporting", href: "/progress", blurb: "The figures, their sources and the gaps." },
+              { icon: "document", label: "Climate Action Plan", href: CAP_URL, blurb: "The institute's plan for carbon neutrality by 2050." },
+              { icon: "printer", label: "Resources & downloads", href: "/downloads", blurb: "Posters and signage ready to print." },
             ]}
           />
         </div>

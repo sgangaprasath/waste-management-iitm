@@ -14,6 +14,7 @@ export default function BinFinderPage() {
     <>
       <PageHeader
         eyebrow="Guidelines"
+        icon="document"
         title="Which bin does this go in?"
         lede="Type what you are holding. If it is not here, the rule of thumb is at the bottom of the results."
         crumbs={[
@@ -31,6 +32,7 @@ export default function BinFinderPage() {
       <Section tone="soft">
         <SectionHead
           eyebrow="Reference"
+          icon="bin"
           title="The five containers"
           lede="Colour is the whole interface."
         />
@@ -49,9 +51,9 @@ export default function BinFinderPage() {
         </div>
         <NextSteps
           items={[
-            { label: "Campus-wide rules", href: "/guidelines", blurb: "The three-bin system in full." },
-            { label: "Where it goes", href: "/guidelines/where-it-goes", blurb: "What happens after the bin." },
-            { label: "Printable posters", href: "/downloads", blurb: "Signage for your floor, lab or block." },
+            { icon: "document", label: "Campus-wide rules", href: "/guidelines", blurb: "The three-bin system in full." },
+            { icon: "truck", label: "Where it goes", href: "/guidelines/where-it-goes", blurb: "What happens after the bin." },
+            { icon: "printer", label: "Printable posters", href: "/downloads", blurb: "Signage for your floor, lab or block." },
           ]}
         />
       </Section>

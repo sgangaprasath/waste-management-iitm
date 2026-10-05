@@ -93,6 +93,7 @@ export default function DownloadsPage() {
     <>
       <PageHeader
         eyebrow="Resources"
+        icon="printer"
         title="Posters & printable signage"
         lede="Signage works where the decision is made — at the bin, at the exit, above the plate-scrape station. Print, laminate, and put them where someone is standing with something in their hand."
         crumbs={[{ label: "Resources", href: "/downloads" }]}
@@ -101,6 +102,7 @@ export default function DownloadsPage() {
       <Section tone="paper">
         <SectionHead
           eyebrow="Zone signage"
+          icon="printer"
           title="Segregation posters by zone"
         />
         <div className="mt-10">
@@ -111,6 +113,7 @@ export default function DownloadsPage() {
       <Section tone="soft">
         <SectionHead
           eyebrow="Events"
+          icon="calendar"
           title="Flyers and bin-station signage for events"
           lede="Signage at every station, plus a volunteer during meal breaks, does most of the work."
         />
@@ -147,8 +150,8 @@ export default function DownloadsPage() {
           <NextSteps
             items={[
               { label: "Campus-wide guidelines", href: "/guidelines", blurb: "What the posters are based on." },
-              { label: "Event organisers", href: "/take-action/events", blurb: "Planning bins, catering and staffing." },
-              { label: "About the committee", href: "/about", blurb: "Who to ask for custom artwork." },
+              { icon: "calendar", label: "Event organisers", href: "/take-action/events", blurb: "Planning bins, catering and staffing." },
+              { icon: "info", label: "About the committee", href: "/about", blurb: "Who to ask for custom artwork." },
             ]}
           />
         </div>

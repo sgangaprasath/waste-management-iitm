@@ -42,6 +42,7 @@ export default async function AudiencePage({ params }: { params: Promise<Params>
       <Section tone="paper">
         <SectionHead
           eyebrow="Commitments"
+          icon="check"
           title="Pick the ones you will actually keep"
           lede="Two kept beats eight abandoned."
         />
@@ -65,7 +66,7 @@ export default async function AudiencePage({ params }: { params: Promise<Params>
       {/* Checklists — compact, printable */}
       <Section tone="soft">
         <div className="flex flex-wrap items-end justify-between gap-4">
-          <SectionHead eyebrow="Checklist" title="Print it; put it where the decision happens" />
+          <SectionHead icon="clipboard" eyebrow="Checklist" title="Print it; put it where the decision happens" />
           <p className="no-print text-[0.8125rem] text-ink-faint">
             On a noticeboard or a cupboard door &mdash; not in a folder.
           </p>
@@ -108,8 +109,8 @@ export default async function AudiencePage({ params }: { params: Promise<Params>
         ) : null}
         <NextSteps
           items={[
-            ...others.map((o) => ({ label: o.title, href: `/take-action/${o.slug}`, blurb: o.kicker })),
-            { label: "Campaigns", href: "/take-action/campaigns", blurb: "Campus-wide efforts to join." },
+            ...others.map((o) => ({ icon: "people" as const, label: o.title, href: `/take-action/${o.slug}`, blurb: o.kicker })),
+            { icon: "info", label: "Campaigns", href: "/take-action/campaigns", blurb: "Campus-wide efforts to join." },
           ]}
         />
       </Section>

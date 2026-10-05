@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Figure from "@/components/figure";
 import { PageHeader, Section, SectionHead, StatGrid, Callout, NextSteps, Pill } from "@/components/ui";
 import Link from "next/link";
-import { headlineMetrics, campusFacts, population, CAP_URL } from "@/content/site";
+import { headlineMetrics, population, CAP_URL } from "@/content/site";
 import { dailyVolumes, yard } from "@/content/flow";
 
 export const metadata: Metadata = {
@@ -42,6 +42,7 @@ export default function ProgressPage() {
       <Section tone="paper">
         <SectionHead
           eyebrow="Headline figures"
+          icon="chart"
           title="Sustainability within reach"
         />
         <div className="mt-10">
@@ -52,39 +53,7 @@ export default function ProgressPage() {
       <Section tone="soft">
         <div className="grid gap-12 lg:grid-cols-[1.2fr_minmax(0,22rem)] lg:gap-14">
           <div>
-            <SectionHead eyebrow="Operations" title="The campus in detail" />
-            <dl className="mt-10 divide-y divide-ink-hair border-y border-ink-line">
-              {campusFacts.map((f) => (
-                <div key={f.label} className="flex items-baseline gap-6 py-5">
-                  <dt className="w-32 shrink-0 font-serif text-[1.75rem] leading-none text-brand-700">
-                    {f.value}
-                    {f.unit ? (
-                      <span className="ml-1 font-sans text-xs font-medium text-ink-mute">{f.unit}</span>
-                    ) : null}
-                  </dt>
-                  <dd>
-                    <p className="text-[0.9375rem] text-ink">{f.label}</p>
-                    {f.note ? <p className="mt-1 text-[0.8125rem] text-ink-mute">{f.note}</p> : null}
-                    <p className="mt-1.5 text-[0.6875rem] uppercase tracking-[0.1em] text-ink-faint">
-                      {f.sourceUrl ? (
-                        <a href={f.sourceUrl} target="_blank" rel="noreferrer" className="hover:text-brand-600">
-                          {f.source}
-                        </a>
-                      ) : (
-                        f.source
-                      )}
-                      {f.verified === false ? (
-                        <span className="ml-2 rounded-sm bg-brand-50 px-1.5 py-0.5 normal-case tracking-normal text-brand-700">
-                          to confirm
-                        </span>
-                      ) : null}
-                    </p>
-                  </dd>
-                </div>
-              ))}
-            </dl>
-
-            <h3 className="display-3 mt-14 text-xl">Campus population</h3>
+            <h3 className="display-3 text-xl">Campus population</h3>
             <p className="mt-2 text-[0.9375rem] text-ink-mute">
               Committee estimates. They drive bin counts and collection frequency, so they are worth
               confirming against registry data.
@@ -131,6 +100,7 @@ export default function ProgressPage() {
           <div>
             <SectionHead
               eyebrow="Asked, not assumed"
+              icon="chart"
               title="What the campus thinks it throws away"
               lede="From a survey of 335 campus residents. Worth comparing against the yard's weights on the right — perception and tonnage do not agree."
             />
@@ -195,6 +165,7 @@ export default function ProgressPage() {
       <Section tone="paper">
         <SectionHead
           eyebrow="Measured at the segregation yard"
+          icon="scale"
           title="Packaging, kilogrammes per day"
           lede="Recorded for the eight packaging categories a campus life cycle study could quantify. These are real measurements, not estimates."
         />
@@ -223,6 +194,7 @@ export default function ProgressPage() {
           <div>
             <SectionHead
               eyebrow="Honesty"
+              icon="info"
               title="What is not yet measured"
               lede="The numbers a waste programme most needs, which this campus does not yet publish — listed so the gap is a stated commitment rather than a quiet omission."
             />
@@ -262,9 +234,9 @@ export default function ProgressPage() {
         <h2 className="display-3 mb-6 text-xl">Related</h2>
         <NextSteps
           items={[
-            { label: "Where it goes", href: "/guidelines/where-it-goes", blurb: "The yard, its categories and the daily volumes." },
-            { label: "Campaigns & drives", href: "/take-action/campaigns", blurb: "Including the proposed campus audit week." },
-            { label: "About the committee", href: "/about", blurb: "Who maintains this and how to reach them." },
+            { icon: "truck", label: "Where it goes", href: "/guidelines/where-it-goes", blurb: "The yard, its categories and the daily volumes." },
+            { icon: "info", label: "Campaigns & drives", href: "/take-action/campaigns", blurb: "Including the proposed campus audit week." },
+            { icon: "info", label: "About the committee", href: "/about", blurb: "Who maintains this and how to reach them." },
           ]}
         />
       </Section>

@@ -79,6 +79,7 @@ export default function LabWastePage() {
     <>
       <PageHeader
         eyebrow="Guidelines"
+        icon="document"
         title="Laboratory & hazardous waste"
         lede="Never the three-bin system. Collected lab by lab against a logbook and consigned to certified facilities — because the people handling it downstream cannot see inside the container."
         crumbs={[
@@ -92,6 +93,7 @@ export default function LabWastePage() {
           <div>
             <SectionHead
               eyebrow="Non-negotiables"
+              icon="hazard"
               title="Six rules, no exceptions"
             />
             <ol className="mt-10 divide-y divide-ink-hair border-y border-ink-line">
@@ -119,6 +121,7 @@ export default function LabWastePage() {
       <Section tone="soft">
         <SectionHead
           eyebrow="Categories"
+          icon="flask"
           title="How each laboratory stream is handled"
           lede="Classification follows exposure, not appearance. A glove that touched nothing is recycling; the same glove after a solvent is hazardous waste."
         />
@@ -170,7 +173,7 @@ export default function LabWastePage() {
           <NextSteps
             items={[
               { label: "Academic zone guidelines", href: "/guidelines/academic", blurb: "The full picture for departments and labs." },
-              { label: "E-waste", href: "/guidelines/e-waste", blurb: "Instruments, batteries, boards and lighting." },
+              { icon: "bolt", label: "E-waste", href: "/guidelines/e-waste", blurb: "Instruments, batteries, boards and lighting." },
               { label: "Faculty & staff actions", href: "/take-action/faculty-staff", blurb: "Green Lab assessment and the laboratory checklist." },
             ]}
           />

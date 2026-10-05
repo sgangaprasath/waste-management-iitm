@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Figure from "@/components/figure";
 import { BinChip } from "@/components/binParts";
+import Icon from "@/components/icons";
 import { PageHeader, Section, SectionHead, Callout, NextSteps, Pill } from "@/components/ui";
 import { streams, contaminationRules, zoneRecycling } from "@/content/recycling";
 import { dailyVolumes } from "@/content/flow";
@@ -67,6 +68,7 @@ export default function RecyclingPage() {
       <Section tone="soft">
         <SectionHead
           eyebrow="The streams"
+          icon="cycle"
           title="Every material, and what has to be true to recover it"
         />
         <div className="mt-10 overflow-x-auto rounded-xl border border-ink-line bg-paper shadow-card">
@@ -82,13 +84,16 @@ export default function RecyclingPage() {
               {streams.map((s) => (
                 <tr key={s.name} className="border-b border-ink-hair align-top last:border-b-0">
                   <th scope="row" className="px-6 py-5 text-left font-normal">
-                    <span className="block font-serif text-[1.25rem] leading-snug text-ink">
-                      {s.name}
+                    <span className="flex items-start gap-2.5">
+                      <Icon name={s.icon} size={22} className="mt-[3px] text-brand-700" />
+                      <span className="block font-serif text-[1.25rem] leading-snug text-ink">
+                        {s.name}
+                      </span>
                     </span>
-                    <span className="mt-1.5 block text-[0.9375rem] leading-[1.45] text-ink-mute">
+                    <span className="mt-1.5 block pl-[1.9375rem] text-[0.9375rem] leading-[1.45] text-ink-mute">
                       {s.materials}
                     </span>
-                    <span className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <span className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1 pl-[1.9375rem]">
                       <BinChip bin={s.bin} />
                       <Pill tone={recoverTone[s.recoverable]}>{recoverLabel[s.recoverable]}</Pill>
                     </span>
@@ -106,14 +111,13 @@ export default function RecyclingPage() {
       <Section tone="paper">
         <SectionHead
           eyebrow="Contamination"
+          icon="warning"
           title="Six things that decide whether any of this works"
         />
         <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {contaminationRules.map((r, i) => (
+          {contaminationRules.map((r) => (
             <li key={r.rule} className="rounded-xl border border-ink-line bg-paper p-5 shadow-card">
-              <span className="text-[0.6875rem] tracking-[0.1em] text-ink-faint">
-                {String(i + 1).padStart(2, "0")}
-              </span>
+              <Icon name="warning" size={20} className="text-[#B8860B]" />
               <p className="mt-1 font-serif text-[1.25rem] leading-snug text-ink">{r.rule}</p>
               <p className="mt-1.5 text-[0.875rem] leading-relaxed text-ink-mute">{r.body}</p>
             </li>
@@ -125,6 +129,7 @@ export default function RecyclingPage() {
       <Section tone="soft">
         <SectionHead
           eyebrow="By zone"
+          icon="map"
           title="Where the effort pays off in your part of campus"
         />
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -170,9 +175,9 @@ export default function RecyclingPage() {
       <Section tone="paper" tight>
         <NextSteps
           items={[
-            { label: "Where it goes", href: "/guidelines/where-it-goes", blurb: "The segregation yard, its 24 categories and the daily volumes." },
-            { label: "Repurposing", href: "/repurposing", blurb: "Better than recycling: keep the object, not just the material." },
-            { label: "Campus guidelines", href: "/guidelines", blurb: "The three-bin system and what goes where." },
+            { icon: "truck", label: "Where it goes", href: "/guidelines/where-it-goes", blurb: "The segregation yard, its 24 categories and the daily volumes." },
+            { icon: "box", label: "Repurposing", href: "/repurposing", blurb: "Better than recycling: keep the object, not just the material." },
+            { icon: "document", label: "Campus guidelines", href: "/guidelines", blurb: "The three-bin system and what goes where." },
           ]}
         />
       </Section>

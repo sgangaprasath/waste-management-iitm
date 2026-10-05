@@ -50,6 +50,7 @@ export default function EWastePage() {
     <>
       <PageHeader
         eyebrow="Guidelines"
+        icon="document"
         title="Electrical & electronic waste"
         lede="The most valuable material the campus discards, and the most damaging when discarded wrongly. One button cell contaminates a batch of compost; a laptop in the reject stream loses gold, copper and rare earths."
         crumbs={[
@@ -63,6 +64,7 @@ export default function EWastePage() {
           <div>
             <SectionHead
               eyebrow="The route"
+              icon="truck"
               title="Five steps from your desk to certified recovery"
             />
             <ol className="mt-10 divide-y divide-ink-hair border-y border-ink-line">
@@ -123,9 +125,9 @@ export default function EWastePage() {
           <h3 className="display-3 mb-6 text-xl">Related</h3>
           <NextSteps
             items={[
-              { label: "Laboratory & hazardous waste", href: "/guidelines/lab-waste", blurb: "Chemical, biological and sharps protocols." },
-              { label: "Repurposing", href: "/repurposing", blurb: "Reuse a working device instead of recycling it." },
-              { label: "Campaigns", href: "/take-action/campaigns", blurb: "Collection drives you can join or run." },
+              { icon: "flask", label: "Laboratory & hazardous waste", href: "/guidelines/lab-waste", blurb: "Chemical, biological and sharps protocols." },
+              { icon: "box", label: "Repurposing", href: "/repurposing", blurb: "Reuse a working device instead of recycling it." },
+              { icon: "info", label: "Campaigns", href: "/take-action/campaigns", blurb: "Collection drives you can join or run." },
             ]}
           />
         </div>

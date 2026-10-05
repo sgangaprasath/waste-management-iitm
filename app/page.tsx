@@ -51,6 +51,7 @@ export default function Home() {
       <Section tone="paper">
         <SectionHead
           eyebrow="The campus in numbers"
+          icon="chart"
           title="Sustainability within reach"
           lede="Our path to sustainability is informed through data."
         />
@@ -77,6 +78,7 @@ export default function Home() {
       <Section tone="paper">
         <SectionHead
           eyebrow="Three zones"
+          icon="map"
           title="Find the guidance for where you actually are"
           lede="A teaching laboratory, a mess hall and a family kitchen each need different answers."
         />
@@ -113,6 +115,7 @@ export default function Home() {
       <Section tone="soft">
         <SectionHead
           eyebrow="Explore our work"
+          icon="cycle"
           title="Segregation is the beginning, not the point"
         />
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -157,7 +160,7 @@ export default function Home() {
 
       {/* ------------------------------------------------- get started */}
       <Section tone="paper">
-        <SectionHead eyebrow="Get started" title="Five things, in your first week" />
+        <SectionHead icon="check" eyebrow="Get started" title="Five things, in your first week" />
         <ol className="mt-10 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-5">
           {getStarted.map((s) => (
             <li key={s.n}>

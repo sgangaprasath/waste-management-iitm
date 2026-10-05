@@ -3,7 +3,7 @@ import Link from "next/link";
 import Figure from "@/components/figure";
 import FlowDiagram from "@/components/flowDiagram";
 import { PageHeader, Section, SectionHead, Callout, NextSteps, Pill } from "@/components/ui";
-import { yard, yardCategories, dailyVolumes, STUDY_PACKAGING } from "@/content/flow";
+import { yardCategories, dailyVolumes, STUDY_PACKAGING } from "@/content/flow";
 
 export const metadata: Metadata = {
   title: "Where it goes",
@@ -19,6 +19,7 @@ export default function WhereItGoesPage() {
     <>
       <PageHeader
         eyebrow="Guidelines"
+        icon="document"
         title="Where it goes after the bin"
         lede="Segregating correctly only matters because of what happens next. This is the route your waste actually takes across campus — who collects it, where it is sorted, and who buys it."
         crumbs={[
@@ -29,7 +30,7 @@ export default function WhereItGoesPage() {
 
       {/* The flow */}
       <Section tone="paper">
-        <SectionHead eyebrow="The route" title="Bin to yard to vendor" />
+        <SectionHead icon="truck" eyebrow="The route" title="Bin to yard to vendor" />
         <div className="mt-10">
           <FlowDiagram />
         </div>
@@ -39,66 +40,11 @@ export default function WhereItGoesPage() {
         </p>
       </Section>
 
-      {/* The yard */}
-      <Section tone="soft">
-        <div className="grid gap-10 lg:grid-cols-[1.15fr_minmax(0,23rem)] lg:gap-14">
-          <div>
-            <SectionHead
-              eyebrow="The segregation yard"
-              title="Thirty-five people, sorting by hand"
-              lede="The yard is the hinge of the whole system, and it runs almost entirely on accumulated human judgement."
-            />
-            <ul className="mt-9 space-y-3">
-              {yard.facts.map((f) => (
-                <li key={f} className="flex gap-3 text-[0.9375rem] leading-relaxed text-ink-soft">
-                  <span aria-hidden className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-brand-400" />
-                  {f}
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-10 grid gap-5 sm:grid-cols-2">
-              <Callout title="What limits it" tone="warn">
-                <ul className="mt-1 space-y-1.5">
-                  {yard.limitations.map((l) => (
-                    <li key={l}>{l}</li>
-                  ))}
-                </ul>
-              </Callout>
-              <Callout title="What the study recommends" tone="moss">
-                <ul className="mt-1 space-y-1.5">
-                  {yard.recommendations.map((r) => (
-                    <li key={r}>{r}</li>
-                  ))}
-                </ul>
-              </Callout>
-            </div>
-          </div>
-
-          <div className="space-y-5">
-            <Figure
-              name="segregationYard"
-              className="aspect-[3/4] w-full"
-              caption="Sorted material bagged at the yard, awaiting a tender."
-            />
-            <Figure
-              name="yardRecords"
-              className="aspect-[4/3] w-full"
-              caption="The day's weights, recorded by hand."
-            />
-            <Callout tone="plain">
-              Because categories follow what a vendor will pay rather than what the material is,
-              two items made of the same polymer can end up in different piles &mdash; and an item
-              with no buyer has nowhere to go at all.
-            </Callout>
-          </div>
-        </div>
-      </Section>
-
       {/* 24 categories */}
       <Section tone="paper">
         <SectionHead
           eyebrow="The categories"
+          icon="box"
           title="What the yard sorts into"
           lede="Twenty-four piles, grouped here by material for readability — the yard itself works from resale value."
         />
@@ -121,10 +67,10 @@ export default function WhereItGoesPage() {
         </div>
       </Section>
 
-      {/* Yard in pictures */}
+      {/* Where it ends up, in pictures */}
       <Section tone="soft" tight>
         <div className="grid gap-5 sm:grid-cols-3">
-          <Figure name="yardBaling" className="aspect-[3/4] w-full" caption="The baling press." />
+          <Figure name="yardBaling" className="aspect-[3/4] w-full" caption="Baled and stacked, ready for a tender." />
           <Figure name="yardSorted" className="aspect-[3/4] w-full" caption="Rinsed containers, sorted by category." />
           <Figure name="vermicompost" className="aspect-[3/4] w-full" caption="The vermicompost beds — cut vegetable peel becomes manure for campus gardening." />
         </div>
@@ -134,6 +80,7 @@ export default function WhereItGoesPage() {
       <Section tone="paper">
         <SectionHead
           eyebrow="Measured"
+          icon="chart"
           title="What the campus actually produces"
           lede="Share of the daily packaging stream, for the eight categories the study could quantify. Card and plastic-coated card together are two thirds of it."
         />
@@ -180,9 +127,9 @@ export default function WhereItGoesPage() {
           <h3 className="display-3 mb-6 text-xl">Related</h3>
           <NextSteps
             items={[
-              { label: "Campus-wide rules", href: "/guidelines", blurb: "The three-bin system and what goes where." },
-              { label: "Recycling", href: "/recycling", blurb: "What each material is worth once it is recovered." },
-              { label: "Progress & reporting", href: "/progress", blurb: "What the campus measures, and what it does not." },
+              { icon: "document", label: "Campus-wide rules", href: "/guidelines", blurb: "The three-bin system and what goes where." },
+              { icon: "cycle", label: "Recycling", href: "/recycling", blurb: "What each material is worth once it is recovered." },
+              { icon: "chart", label: "Progress & reporting", href: "/progress", blurb: "What the campus measures, and what it does not." },
             ]}
           />
         </div>

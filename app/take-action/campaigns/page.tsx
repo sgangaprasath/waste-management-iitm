@@ -15,6 +15,7 @@ export default function CampaignsPage() {
     <>
       <PageHeader
         eyebrow="Take action"
+        icon="people"
         title="Campaigns & annual events"
         lede="A campaign does what a poster cannot: it puts a date in the calendar and a person in charge. These all run today."
         crumbs={[
@@ -67,19 +68,6 @@ export default function CampaignsPage() {
               className="aspect-[4/3] w-full"
               caption="A Swachhata Hi Seva cleaning drive in the residential zone."
             />
-            <Figure
-              name="wasteMap"
-              className="aspect-[16/10] w-full"
-              caption="The campus waste map, built building by building."
-            />
-            <Callout title="Punch the Plastic" tone="moss">
-              <p>
-                Run by the institute&rsquo;s sustainable campus collective: clean, dry plastic
-                packaging that conventional recycling will not take, routed to pyrolysis instead of
-                landfill. It launched alongside a monkey-proof bin hackathon &mdash; a design problem
-                few campuses have.
-              </p>
-            </Callout>
           </div>
         </div>
       </Section>
@@ -106,9 +94,9 @@ export default function CampaignsPage() {
         <h2 className="display-3 mb-6 text-xl">Related</h2>
         <NextSteps
           items={[
-            { label: "Students", href: "/take-action/students", blurb: "What to commit to in your room, mess and lab." },
-            { label: "Repurposing", href: "/repurposing", blurb: "The reuse programmes these campaigns feed." },
-            { label: "Event organisers", href: "/take-action/events", blurb: "Running a festival or conference with less waste." },
+            { icon: "academic", label: "Students", href: "/take-action/students", blurb: "What to commit to in your room, mess and lab." },
+            { icon: "box", label: "Repurposing", href: "/repurposing", blurb: "The reuse programmes these campaigns feed." },
+            { icon: "calendar", label: "Event organisers", href: "/take-action/events", blurb: "Running a festival or conference with less waste." },
           ]}
         />
       </Section>

@@ -16,6 +16,7 @@ export default function GuidelinesPage() {
     <>
       <PageHeader
         eyebrow="Guidelines"
+        icon="document"
         title="What goes where, everywhere on campus"
         lede="Three bins, plus two streams for the things that must never enter them. These rules hold everywhere on campus. Zone guidance builds on top of them — it never replaces them."
         crumbs={[{ label: "Guidelines", href: "/guidelines" }]}
@@ -87,6 +88,7 @@ export default function GuidelinesPage() {
       <Section tone="soft">
         <SectionHead
           eyebrow="Observed on campus"
+          icon="warning"
           title="Three things that keep going wrong"
           lede="Documented by a student survey of neglected waste zones. None of them is a shortage of bins."
         />
@@ -125,6 +127,7 @@ export default function GuidelinesPage() {
         </div>
         <SectionHead
           eyebrow="The containers"
+          icon="bin"
           title="Every stream, what it takes and where it ends up"
           lede="Colour is the whole interface."
         />
@@ -136,12 +139,14 @@ export default function GuidelinesPage() {
       <Section tone="soft">
         <SectionHead
           eyebrow="Zone guidance"
+          icon="map"
           title="Now find your part of the campus"
         />
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {zones.map((z) => (
             <Card
               key={z.slug}
+              icon={({ academic: "academic", hostel: "home", residential: "building" } as const)[z.slug]}
               href={`/guidelines/${z.slug}`}
               eyebrow={`${z.scale[0].value} ${z.scale[0].label}`}
               title={z.name}
@@ -155,21 +160,29 @@ export default function GuidelinesPage() {
           <NextSteps
             items={[
               {
+                icon: "truck",
+
                 label: "Where it goes",
                 href: "/guidelines/where-it-goes",
                 blurb: "Bin to segregation yard to vendor — the route your waste actually takes.",
               },
               {
+                icon: "flask",
+
                 label: "Laboratory & hazardous waste",
                 href: "/guidelines/lab-waste",
                 blurb: "Chemical, biohazardous and sharps protocols for every bench on campus.",
               },
               {
+                icon: "bolt",
+
                 label: "E-waste",
                 href: "/guidelines/e-waste",
                 blurb: "Batteries, lighting, cables and equipment, and where they are collected.",
               },
               {
+                icon: "printer",
+
                 label: "Printable posters",
                 href: "/downloads",
                 blurb: "Zone signage and event flyers ready to print and put on a wall.",

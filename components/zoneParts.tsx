@@ -1,23 +1,31 @@
 import { BinChip } from "./binParts";
 import { binByKey } from "@/content/bins";
+import Icon from "./icons";
 import type { Zone } from "@/content/zones";
 
 export function WasteTable({ group }: { group: Zone["groups"][number] }) {
   return (
     <div className="overflow-hidden rounded-xl border border-ink-line bg-paper shadow-card">
       <div className="border-b border-ink-line bg-paper-soft px-6 py-5">
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-          <span className="flex gap-1" aria-hidden>
-            {Array.from(new Set(group.items.map((i) => i.bin))).map((k) => (
-              <span
-                key={k}
-                className="h-2.5 w-2.5 rounded-full ring-1 ring-inset ring-black/15"
-                style={{ backgroundColor: binByKey[k].hex }}
-              />
-            ))}
-          </span>
-          <h3 className="font-serif text-[1.5rem] leading-tight text-ink">{group.title}</h3>
-          <span className="text-[0.75rem] text-ink-faint">{group.items.length} items</span>
+        <div className="flex items-start gap-3">
+          {group.icon ? (
+            <Icon name={group.icon} size={24} className="mt-0.5 text-brand-700" />
+          ) : null}
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+            <h3 className="font-serif text-[1.5rem] leading-tight text-ink">{group.title}</h3>
+            <span className="flex items-center gap-1.5">
+              <span className="flex gap-1" aria-hidden>
+                {Array.from(new Set(group.items.map((i) => i.bin))).map((k) => (
+                  <span
+                    key={k}
+                    className="h-2.5 w-2.5 rounded-full ring-1 ring-inset ring-black/15"
+                    style={{ backgroundColor: binByKey[k].hex }}
+                  />
+                ))}
+              </span>
+              <span className="text-[0.75rem] text-ink-faint">{group.items.length} items</span>
+            </span>
+          </div>
         </div>
         {group.intro ? (
           <p className="mt-1.5 max-w-3xl text-[0.9375rem] leading-relaxed text-ink-mute">
@@ -76,11 +84,9 @@ export function DisposalTable({ rows }: { rows: Zone["disposal"] }) {
 export function PracticeList({ items }: { items: { title: string; body: string }[] }) {
   return (
     <ol className="grid gap-x-10 gap-y-7 sm:grid-cols-2">
-      {items.map((p, i) => (
-        <li key={p.title} className="flex gap-4">
-          <span className="mt-0.5 font-serif text-[1.75rem] leading-none text-brand-300" aria-hidden>
-            {String(i + 1).padStart(2, "0")}
-          </span>
+      {items.map((p) => (
+        <li key={p.title} className="flex gap-3.5">
+          <Icon name="check" size={20} className="mt-[5px] text-moss-500" />
           <div>
             <p className="font-serif text-[1.25rem] leading-snug text-ink">{p.title}</p>
             <p className="mt-1 text-[0.9375rem] leading-relaxed text-ink-mute">{p.body}</p>
@@ -96,6 +102,7 @@ export function CollectionPoints({ points }: { points: Zone["collectionPoints"] 
     <ul className="grid gap-4 sm:grid-cols-2">
       {points.map((p) => (
         <li key={p.place} className="rounded-xl border border-ink-line bg-paper p-5 shadow-card">
+          <Icon name="map" size={22} className="mb-2.5 text-brand-700" />
           <p className="font-serif text-[1.25rem] leading-snug text-ink">{p.place}</p>
           <p className="mt-1.5 text-[0.875rem] leading-relaxed text-ink-mute">{p.detail}</p>
         </li>

@@ -1,10 +1,13 @@
 export type BinKey = "green" | "blue" | "red" | "yellow" | "black";
 
+import type { IconKey } from "@/components/icons";
+
 export type Bin = {
   key: BinKey;
   name: string;
   stream: string;
   hex: string;
+  icon: IconKey;
   takes: string[];
   neverTakes: string[];
   destination: string;
@@ -13,6 +16,7 @@ export type Bin = {
 export const bins: Bin[] = [
   {
     key: "green",
+    icon: "leaf",
     name: "Green bin",
     stream: "Wet / biodegradable",
     hex: "#2E7D46",
@@ -33,6 +37,7 @@ export const bins: Bin[] = [
   },
   {
     key: "blue",
+    icon: "cycle",
     name: "Blue bin",
     stream: "Dry recyclable",
     hex: "#1F5FA8",
@@ -53,6 +58,7 @@ export const bins: Bin[] = [
   },
   {
     key: "red",
+    icon: "bin",
     name: "Red bin",
     stream: "Non-recyclable / rejects",
     hex: "#B3261E",
@@ -73,6 +79,7 @@ export const bins: Bin[] = [
   },
   {
     key: "yellow",
+    icon: "hazard",
     name: "Yellow container",
     stream: "Hazardous, chemical & biomedical",
     hex: "#C08A16",
@@ -92,6 +99,7 @@ export const bins: Bin[] = [
   },
   {
     key: "black",
+    icon: "bolt",
     name: "E-waste point",
     stream: "Electrical & electronic",
     hex: "#2B2B2B",

@@ -35,7 +35,7 @@ export const zoneRoutes: ZoneRoute[] = [
     zone: "Hostel zone",
     slug: "hostel",
     sources: ["Hostels", "Messes", "Commercial eateries"],
-    route: "Handed to the Xpert team, which runs collection across the zone.",
+    route: "Handed to the Housekeeping team, which runs collection across the zone.",
     ask: "Dry and wet waste must be separated before handover.",
   },
   {
@@ -43,7 +43,7 @@ export const zoneRoutes: ZoneRoute[] = [
     slug: "academic",
     sources: ["Departments", "Laboratories", "Offices and libraries"],
     route:
-      "Primary segregation is done by the Xpert team before transport to the segregation yard.",
+      "Primary segregation is done by the Housekeeping team before transport to the segregation yard.",
     ask: "Keep streams apart at the bin so the primary sort is not undone.",
   },
 ];
@@ -66,7 +66,7 @@ export const yard = {
   categories: 24,
   facts: [
     "Sorting is manual, by a team of 30 to 35 people working from decades of accumulated judgement.",
-    "Material is separated into 24 distinct categories by the Xpert team.",
+    "Material is separated into 24 distinct categories by the Housekeeping team.",
     "Categories follow what vendors will buy and the price it fetches — not the material composition of the product.",
     "Some categories are baled; others are stored in gunny bags as they are.",
     "Tenders are floated per category and the material is sold on, which makes the yard a revenue stream for the institute rather than a cost.",

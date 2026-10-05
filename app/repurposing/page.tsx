@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Figure from "@/components/figure";
 import { PageHeader, Section, SectionHead, Callout, NextSteps, Pill } from "@/components/ui";
+import Icon from "@/components/icons";
 import { ladder, programmes, zoneRepurposing } from "@/content/repurposing";
 
 const runningProgrammes = programmes.filter((p) => p.status === "running");
@@ -28,16 +29,18 @@ export default function RepurposingPage() {
           <div>
             <SectionHead
               eyebrow="The hierarchy"
+              icon="scale"
               title="Seven steps, in order of preference"
               lede="Recycling appears sixth, not first. Everything above it keeps the design, the assembly and the labour as well as the material."
             />
             <ol className="mt-9 overflow-hidden rounded-xl border border-ink-line bg-paper shadow-card">
               {ladder.map((l, i) => (
                 <li key={l.step} className="flex items-baseline gap-5 border-b border-ink-hair px-6 py-4 last:border-b-0">
-                  <span
-                    aria-hidden
-                    className="mt-1 h-2.5 w-2.5 shrink-0 rounded-full"
-                    style={{ backgroundColor: i < 5 ? "#3F6B50" : i === 5 ? "#B8860B" : "#752335" }}
+                  <Icon
+                    name={(["hazard", "scale", "cycle", "tool", "box", "cycle", "bolt"] as const)[i]}
+                    size={20}
+                    className="mt-[3px]"
+                    {...{ style: { color: i < 5 ? "#3F6B50" : i === 5 ? "#B8860B" : "#752335" } }}
                   />
                   <span className="w-7 shrink-0 text-[0.6875rem] text-ink-faint">{l.step}</span>
                   <span className="w-[6.5rem] shrink-0 font-serif text-[1.25rem] text-ink">
@@ -62,6 +65,7 @@ export default function RepurposingPage() {
       <Section tone="soft">
         <SectionHead
           eyebrow="Programmes"
+          icon="info"
           title="What runs today"
           lede="Every one of these is live on campus now."
         />
@@ -94,7 +98,7 @@ export default function RepurposingPage() {
 
       {/* Zones — merged onto this page */}
       <Section tone="soft">
-        <SectionHead eyebrow="By zone" title="Reuse looks different in each part of campus" />
+        <SectionHead icon="map" eyebrow="By zone" title="Reuse looks different in each part of campus" />
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {zoneRepurposing.map((z) => (
             <section
@@ -132,9 +136,9 @@ export default function RepurposingPage() {
       <Section tone="paper" tight>
         <NextSteps
           items={[
-            { label: "Take action", href: "/take-action", blurb: "Most proposals need a person, not a budget." },
-            { label: "Recycling", href: "/recycling", blurb: "For what genuinely cannot be reused." },
-            { label: "Campus guidelines", href: "/guidelines", blurb: "The three-bin system and what goes where." },
+            { icon: "people", label: "Take action", href: "/take-action", blurb: "Most proposals need a person, not a budget." },
+            { icon: "cycle", label: "Recycling", href: "/recycling", blurb: "For what genuinely cannot be reused." },
+            { icon: "document", label: "Campus guidelines", href: "/guidelines", blurb: "The three-bin system and what goes where." },
           ]}
         />
       </Section>

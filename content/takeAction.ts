@@ -288,18 +288,6 @@ export type Campaign = {
 
 export const campaigns: Campaign[] = [
   {
-    title: "Campus waste map",
-    when: "Built 2024, being extended",
-    status: "running",
-    body: "A building-by-building map of where waste is generated on campus, with a reporting route for overflowing or missing bins. It exists because no centralised record of campus waste data did.",
-  },
-  {
-    title: "Steel cups at campus tea stalls",
-    when: "Running at Chai Waale",
-    status: "running",
-    body: "Self-service steel cups replacing paper cups at campus tea stalls. Nearly every student surveyed already knew paper cups are plastic-lined — the cups removed the excuse.",
-  },
-  {
     title: "Eco Ganesha workshop",
     when: "Ahead of the festival",
     status: "running",

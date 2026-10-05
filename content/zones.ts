@@ -1,4 +1,5 @@
 import type { ImageKey } from "./images";
+import type { IconKey } from "@/components/icons";
 import type { BinKey } from "./bins";
 
 export type WasteItem = {
@@ -12,6 +13,7 @@ export type WasteGroup = {
   title: string;
   intro?: string;
   items: WasteItem[];
+  icon?: IconKey;
 };
 
 export type Practice = { title: string; body: string };
@@ -51,7 +53,7 @@ export const zones: Zone[] = [
     collectionPoints: [
       {
         place: "Classrooms and lecture halls",
-        detail: "HSB, MSB, ESB and the other teaching complexes — three-bin stations at every exit. The Xpert team does a primary sort before material leaves for the segregation yard.",
+        detail: "HSB, MSB, ESB and the other teaching complexes — three-bin stations at every exit. The Housekeeping team does a primary sort before material leaves for the segregation yard.",
       },
       {
         place: "Laboratories",
@@ -78,6 +80,7 @@ export const zones: Zone[] = [
     groups: [
       {
         title: "Stationery and academic waste",
+    icon: "document",
         intro: "The largest stream by volume, and the easiest to recover — provided it stays dry.",
         items: [
           {
@@ -123,6 +126,7 @@ export const zones: Zone[] = [
       },
       {
         title: "Laboratory waste — chemical",
+    icon: "flask",
         intro: "Never a general bin, never a sink. Every container is labelled and logged.",
         items: [
           {
@@ -145,6 +149,7 @@ export const zones: Zone[] = [
       },
       {
         title: "Laboratory waste — contaminated and microbiological",
+    icon: "hazard",
         items: [
           {
             item: "Used filter papers, aluminium foil, tissues from bench work",
@@ -173,6 +178,7 @@ export const zones: Zone[] = [
       },
       {
         title: "Electronic and equipment waste",
+    icon: "computer",
         items: [
           {
             item: "Dead batteries, multimeters, wires, heating mantles, dead instruments",
@@ -194,6 +200,7 @@ export const zones: Zone[] = [
       },
       {
         title: "Event and conference waste",
+    icon: "calendar",
         intro: "Predictable, concentrated, and almost entirely avoidable with planning.",
         items: [
           {
@@ -323,7 +330,7 @@ export const zones: Zone[] = [
       {
         place: "Mess halls",
         detail:
-          "Cauvery, Himalaya, Nilgiri, Ganga and the other messes — plate-scrape stations feeding the wet-waste line to the biogas digesters. Messes and commercial eateries must separate dry from wet before handing over to the Xpert team.",
+          "Cauvery, Himalaya, Nilgiri, Ganga and the other messes — plate-scrape stations feeding the wet-waste line to the biogas digesters. Messes and commercial eateries must separate dry from wet before handing over to the Housekeeping team.",
       },
       {
         place: "Recreational areas",
@@ -341,6 +348,7 @@ export const zones: Zone[] = [
     groups: [
       {
         title: "Food-related waste",
+    icon: "plate",
         intro: "The biggest stream here, and where a wrong bin does most damage. Wet does not mean biodegradable.",
         items: [
           {
@@ -376,6 +384,7 @@ export const zones: Zone[] = [
       },
       {
         title: "Stationery and study waste",
+    icon: "book",
         items: [
           {
             item: "Notebooks, registers, loose paper, textbooks, craft paper",
@@ -408,6 +417,7 @@ export const zones: Zone[] = [
       },
       {
         title: "Room and personal waste",
+    icon: "home",
         items: [
           {
             item: "Room sweepings, dust, hair, old window netting",
@@ -441,6 +451,7 @@ export const zones: Zone[] = [
       },
       {
         title: "Semester-end and bulky waste",
+    icon: "box",
         intro: "Almost none of this is waste. Most of it is somebody else's first-year kit.",
         items: [
           {
@@ -553,6 +564,7 @@ export const zones: Zone[] = [
     groups: [
       {
         title: "Kitchen waste",
+    icon: "plate",
         items: [
           {
             item: "Vegetable peel, fruit rind, leftover cooked food, expired food, tea leaves, coffee grounds",
@@ -581,6 +593,7 @@ export const zones: Zone[] = [
       },
       {
         title: "Living area waste",
+    icon: "home",
         items: [
           {
             item: "Newspapers, magazines, old books, cardboard, bills and documents",
@@ -603,6 +616,7 @@ export const zones: Zone[] = [
       },
       {
         title: "Bathroom and personal care",
+    icon: "drop",
         items: [
           {
             item: "Sanitary napkins, diapers, cotton, used tissues",
@@ -625,6 +639,7 @@ export const zones: Zone[] = [
       },
       {
         title: "Cleaning, maintenance and garden",
+    icon: "tool",
         items: [
           {
             item: "Empty detergent and cleaning-chemical containers, mop heads, old brushes",
@@ -652,6 +667,7 @@ export const zones: Zone[] = [
       },
       {
         title: "Electronic waste",
+    icon: "bolt",
         items: [
           {
             item: "Mixers, rice cookers, fans, gadgets, chargers, batteries",
@@ -668,6 +684,7 @@ export const zones: Zone[] = [
       },
       {
         title: "Seasonal and occasional waste",
+    icon: "gift",
         intro: "Bursts that regular collection is not sized for. Plan each a week ahead.",
         items: [
           {

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import Icon, { type IconKey } from "./icons";
 
 /* ---------------------------------------------------------------- layout */
 
@@ -38,17 +39,26 @@ export function SectionHead({
   lede,
   align = "left",
   inverted = false,
+  icon,
 }: {
   eyebrow?: string;
   title: string;
   lede?: string;
   align?: "left" | "center";
   inverted?: boolean;
+  icon?: IconKey;
 }) {
   return (
     <div className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
       {eyebrow ? (
-        <p className={inverted ? "eyebrow text-brand-200" : "eyebrow-accent"}>{eyebrow}</p>
+        <p
+          className={`flex items-center gap-2 ${
+            align === "center" ? "justify-center" : ""
+          } ${inverted ? "eyebrow text-brand-200" : "eyebrow-accent"}`}
+        >
+          {icon ? <Icon name={icon} size={16} className="-mt-px" /> : null}
+          {eyebrow}
+        </p>
       ) : null}
       <h2 className={`display-2 ${eyebrow ? "mt-3" : ""} ${inverted ? "!text-paper" : ""}`}>
         {title}
@@ -66,12 +76,14 @@ export function PageHeader({
   lede,
   crumbs,
   meta,
+  icon,
 }: {
   eyebrow?: string;
   title: string;
   lede?: string;
   crumbs?: { label: string; href: string }[];
   meta?: ReactNode;
+  icon?: IconKey;
 }) {
   return (
     <header className="border-b border-ink-line bg-paper-soft">
@@ -95,7 +107,12 @@ export function PageHeader({
             </ol>
           </nav>
         ) : null}
-        {eyebrow ? <p className="eyebrow-accent">{eyebrow}</p> : null}
+        {eyebrow ? (
+          <p className="eyebrow-accent flex items-center gap-2">
+            {icon ? <Icon name={icon} size={16} className="-mt-px" /> : null}
+            {eyebrow}
+          </p>
+        ) : null}
         <h1 className="display-1 mt-3 max-w-[18ch]">{title}</h1>
         {lede ? <p className="lede mt-5 max-w-2xl">{lede}</p> : null}
         {meta ? <div className="mt-8">{meta}</div> : null}
@@ -113,6 +130,7 @@ export function Card({
   body,
   footer,
   className = "",
+  icon,
 }: {
   href?: string;
   eyebrow?: string;
@@ -120,9 +138,11 @@ export function Card({
   body?: string;
   footer?: ReactNode;
   className?: string;
+  icon?: IconKey;
 }) {
   const inner = (
     <>
+      {icon ? <Icon name={icon} size={26} className="mb-4 text-brand-700" /> : null}
       {eyebrow ? <p className="eyebrow">{eyebrow}</p> : null}
       <h3 className={`font-serif text-[1.5rem] leading-tight text-ink ${eyebrow ? "mt-2" : ""}`}>
         {title}
@@ -213,10 +233,12 @@ export function Callout({
   title,
   children,
   tone = "brand",
+  icon,
 }: {
   title?: string;
   children: ReactNode;
   tone?: "brand" | "moss" | "warn" | "plain";
+  icon?: IconKey;
 }) {
   const tones = {
     brand: "border-brand-200 bg-brand-50",
@@ -224,10 +246,29 @@ export function Callout({
     warn: "border-[#E8D9A8] bg-[#FBF7EC]",
     plain: "border-ink-line bg-paper-soft",
   };
+  const iconTone = {
+    brand: "text-brand-600",
+    moss: "text-moss-600",
+    warn: "text-[#8A6310]",
+    plain: "text-ink-mute",
+  };
+  // Default icon by tone, so a warn callout always reads as a warning.
+  const glyph: IconKey | undefined =
+    icon ?? (tone === "warn" ? "warning" : tone === "moss" ? "check" : undefined);
+
   return (
     <aside className={`rounded-xl border ${tones[tone]} p-6`}>
-      {title ? <p className="font-serif text-[1.25rem] leading-snug text-ink">{title}</p> : null}
-      <div className={`text-[0.9375rem] leading-relaxed text-ink-soft ${title ? "mt-2" : ""}`}>
+      {title ? (
+        <p className="flex items-start gap-2.5 font-serif text-[1.25rem] leading-snug text-ink">
+          {glyph ? <Icon name={glyph} size={20} className={`mt-[3px] ${iconTone[tone]}`} /> : null}
+          <span>{title}</span>
+        </p>
+      ) : null}
+      <div
+        className={`text-[0.9375rem] leading-relaxed text-ink-soft ${title ? "mt-2" : ""} ${
+          title && glyph ? "pl-[1.8125rem]" : ""
+        }`}
+      >
         {children}
       </div>
     </aside>
@@ -289,7 +330,11 @@ export function Pill({
   );
 }
 
-export function NextSteps({ items }: { items: { label: string; href: string; blurb?: string }[] }) {
+export function NextSteps({
+  items,
+}: {
+  items: { label: string; href: string; blurb?: string; icon?: IconKey }[];
+}) {
   return (
     <nav className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((i) => (
@@ -298,6 +343,9 @@ export function NextSteps({ items }: { items: { label: string; href: string; blu
           href={i.href}
           className="group rounded-xl border border-ink-line bg-paper p-5 transition-colors hover:border-brand-200 hover:bg-brand-50/50"
         >
+          {i.icon ? (
+            <Icon name={i.icon} size={22} className="mb-3 text-brand-700" />
+          ) : null}
           <p className="font-serif text-[1.25rem] leading-snug text-ink transition-colors group-hover:text-brand-800">
             {i.label}
           </p>

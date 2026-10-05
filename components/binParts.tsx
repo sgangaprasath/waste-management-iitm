@@ -1,4 +1,5 @@
 import { bins, binByKey, type BinKey } from "@/content/bins";
+import Icon from "./icons";
 
 export function BinChip({ bin, className = "" }: { bin: BinKey; className?: string }) {
   const b = binByKey[bin];
@@ -26,8 +27,19 @@ export function BinCards() {
         >
           <div className="h-1.5 w-full" style={{ backgroundColor: b.hex }} aria-hidden />
           <div className="flex flex-1 flex-col p-6">
-            <h3 className="font-serif text-[1.5rem] leading-none text-ink">{b.name}</h3>
-            <p className="eyebrow mt-2.5">{b.stream}</p>
+            <div className="flex items-center gap-3">
+              <span
+                className="flex h-10 w-10 items-center justify-center rounded-lg"
+                style={{ backgroundColor: `${b.hex}14`, color: b.hex }}
+                aria-hidden
+              >
+                <Icon name={b.icon} size={22} />
+              </span>
+              <div>
+                <h3 className="font-serif text-[1.5rem] leading-none text-ink">{b.name}</h3>
+                <p className="eyebrow mt-1.5">{b.stream}</p>
+              </div>
+            </div>
 
             <div className="mt-6">
               <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-moss-600">

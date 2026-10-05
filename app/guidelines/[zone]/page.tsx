@@ -34,6 +34,7 @@ export default async function ZonePage({ params }: { params: Promise<Params> }) 
     <>
       <PageHeader
         eyebrow="Guidelines"
+        icon="document"
         title={z.name}
         lede={z.lede}
         crumbs={[
@@ -57,6 +58,7 @@ export default async function ZonePage({ params }: { params: Promise<Params> }) 
           <div>
             <SectionHead
               eyebrow="Where waste is collected"
+              icon="truck"
               title="Collection points in this zone"
               lede={z.summary}
             />
@@ -83,6 +85,7 @@ export default async function ZonePage({ params }: { params: Promise<Params> }) 
       <Section tone="soft">
         <SectionHead
           eyebrow="What this zone generates"
+          icon="bin"
           title="Every category, and the container it belongs in"
           lede="Grouped by where the waste arises."
         />
@@ -102,6 +105,7 @@ export default async function ZonePage({ params }: { params: Promise<Params> }) 
       <Section tone="paper">
         <SectionHead
           eyebrow="Disposal"
+          icon="cycle"
           title="How each stream is handled here"
           lede="What the Engineering Unit and collection staff work to. If a container is missing, report it rather than improvising."
         />
@@ -115,6 +119,7 @@ export default async function ZonePage({ params }: { params: Promise<Params> }) 
           <div>
             <SectionHead
               eyebrow="Best practice"
+              icon="check"
               title="What good looks like in this zone"
               lede="Some already in place, some being worked towards — both listed so the gap is visible."
             />
@@ -154,8 +159,10 @@ export default async function ZonePage({ params }: { params: Promise<Params> }) 
         <h2 className="display-3 mb-6 text-xl">Other zones</h2>
         <NextSteps
           items={[
-            ...others.map((o) => ({ label: o.name, href: `/guidelines/${o.slug}`, blurb: o.summary })),
+            ...others.map((o) => ({ icon: "map" as const, label: o.name, href: `/guidelines/${o.slug}`, blurb: o.summary })),
             {
+              icon: "document",
+
               label: "Campus-wide rules",
               href: "/guidelines",
               blurb: "The three-bin system and the rules that apply everywhere.",

@@ -17,6 +17,7 @@ export default function TakeActionPage() {
     <>
       <PageHeader
         eyebrow="Take action"
+        icon="people"
         title="Start where you are, this week"
         lede="Campus waste is not an infrastructure problem waiting on a budget. It is thousands of small decisions made every day."
         crumbs={[{ label: "Take action", href: "/take-action" }]}
@@ -24,7 +25,7 @@ export default function TakeActionPage() {
 
       {/* Five steps — icon-led, one line each */}
       <Section tone="paper">
-        <SectionHead eyebrow="Get started" title="Five things, in your first week" />
+        <SectionHead icon="check" eyebrow="Get started" title="Five things, in your first week" />
         <ol className="mt-10 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-5">
           {getStarted.map((s) => (
             <li key={s.n}>
@@ -46,7 +47,7 @@ export default function TakeActionPage() {
 
       {/* Audiences — big visual picker */}
       <Section tone="soft">
-        <SectionHead eyebrow="Find your role" title="Pick the one that describes your day" />
+        <SectionHead icon="people" eyebrow="Find your role" title="Pick the one that describes your day" />
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
           {audiences.map((a) => (
             <Link
@@ -83,6 +84,7 @@ export default function TakeActionPage() {
           <div>
             <SectionHead
               eyebrow="Beyond your own bin"
+              icon="info"
               title="Campaigns and drives"
               lede="Campus-wide efforts that need people in every hostel, department and block — not just a central team."
             />
