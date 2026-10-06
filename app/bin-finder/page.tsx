@@ -3,6 +3,8 @@ import BinFinder from "@/components/binFinder";
 import { BinCards } from "@/components/binParts";
 import { PageHeader, Section, SectionHead, Callout, NextSteps } from "@/components/ui";
 import { bins } from "@/content/bins";
+import PosterCard from "@/components/posterCard";
+import { pictorialPoster } from "@/content/posters";
 
 export const metadata: Metadata = {
   title: "Bin finder",
@@ -22,6 +24,7 @@ export default function BinFinderPage() {
           { label: "Guidelines", href: "/guidelines" },
           { label: "Bin finder", href: "/bin-finder" },
         ]}
+        aside={<PosterCard poster={pictorialPoster} priority />}
       />
 
       {/* The five container colours, as a rule across the page. */}

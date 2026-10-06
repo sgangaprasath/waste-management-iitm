@@ -77,6 +77,7 @@ export function PageHeader({
   crumbs,
   meta,
   icon,
+  aside,
 }: {
   eyebrow?: string;
   title: string;
@@ -84,6 +85,8 @@ export function PageHeader({
   crumbs?: { label: string; href: string }[];
   meta?: ReactNode;
   icon?: IconKey;
+  /** Optional second column, shown beside the title from `lg` upwards. */
+  aside?: ReactNode;
 }) {
   return (
     <header className="border-b border-ink-line bg-paper-soft">
@@ -107,15 +110,24 @@ export function PageHeader({
             </ol>
           </nav>
         ) : null}
-        {eyebrow ? (
-          <p className="eyebrow-accent flex items-center gap-2">
-            {icon ? <Icon name={icon} size={16} className="-mt-px" /> : null}
-            {eyebrow}
-          </p>
-        ) : null}
-        <h1 className="display-1 mt-3 max-w-[18ch]">{title}</h1>
-        {lede ? <p className="lede mt-5 max-w-2xl">{lede}</p> : null}
-        {meta ? <div className="mt-8">{meta}</div> : null}
+        <div
+          className={
+            aside ? "grid gap-10 lg:grid-cols-[1fr_minmax(0,32rem)] lg:items-center lg:gap-14" : ""
+          }
+        >
+          <div>
+            {eyebrow ? (
+              <p className="eyebrow-accent flex items-center gap-2">
+                {icon ? <Icon name={icon} size={16} className="-mt-px" /> : null}
+                {eyebrow}
+              </p>
+            ) : null}
+            <h1 className="display-1 mt-3 max-w-[18ch]">{title}</h1>
+            {lede ? <p className="lede mt-5 max-w-2xl">{lede}</p> : null}
+            {meta ? <div className="mt-8">{meta}</div> : null}
+          </div>
+          {aside ? <div className="lg:justify-self-end lg:self-center">{aside}</div> : null}
+        </div>
       </div>
     </header>
   );

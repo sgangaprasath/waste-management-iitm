@@ -18,6 +18,19 @@ export type Poster = {
   href: string;
 };
 
+/**
+ * The wordless one. Pictures only, so it reads at a glance and across
+ * languages — which is why it heads the bin finder.
+ */
+export const pictorialPoster: Poster = {
+  title: "Segregate at source",
+  kicker: "At a glance",
+  blurb: "Every common item drawn, not described — what goes in each bin, and what never does.",
+  file: "/posters/Pictorial Representation.png",
+  alt: "Pictorial poster showing, for each of the green, blue and red bins, drawings of what to put in and what to keep out",
+  href: "/guidelines",
+};
+
 export const zonePosters: Poster[] = [
   {
     title: "Campus-wide",
@@ -90,6 +103,7 @@ export const eventPosters: Poster[] = [
  * downloads page instead.
  */
 export const heroPosters: Poster[] = [
+  pictorialPoster,
   zonePosters[1],
   zonePosters[2],
   zonePosters[3],
