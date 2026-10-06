@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import BinFinder from "@/components/binFinder";
 import { BinCards } from "@/components/binParts";
 import { PageHeader, Section, SectionHead, Callout, NextSteps } from "@/components/ui";
+import { bins } from "@/content/bins";
 
 export const metadata: Metadata = {
   title: "Bin finder",
@@ -23,8 +24,15 @@ export default function BinFinderPage() {
         ]}
       />
 
+      {/* The five container colours, as a rule across the page. */}
+      <div className="flex h-2" aria-hidden>
+        {bins.map((b) => (
+          <span key={b.key} className="flex-1" style={{ backgroundColor: b.hex }} />
+        ))}
+      </div>
+
       <Section tone="paper">
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-4xl">
           <BinFinder />
         </div>
       </Section>

@@ -7,6 +7,10 @@ export type Bin = {
   name: string;
   stream: string;
   hex: string;
+  /** Very light wash of `hex`, for tinted panels. */
+  tint: string;
+  /** Darker shade of `hex`, for text that must stay legible on `tint`. */
+  deep: string;
   icon: IconKey;
   takes: string[];
   neverTakes: string[];
@@ -20,6 +24,8 @@ export const bins: Bin[] = [
     name: "Green bin",
     stream: "Wet / biodegradable",
     hex: "#2E7D46",
+    tint: "#EDF6F0",
+    deep: "#1F5A32",
     takes: [
       "Cooked food, leftovers and plate waste",
       "Vegetable peel, fruit rind, egg shells",
@@ -41,6 +47,8 @@ export const bins: Bin[] = [
     name: "Blue bin",
     stream: "Dry recyclable",
     hex: "#1F5FA8",
+    tint: "#EBF2FB",
+    deep: "#154679",
     takes: [
       "Clean, dry paper, card and flattened cartons",
       "Rinsed PET bottles, jars and rigid containers",
@@ -62,6 +70,8 @@ export const bins: Bin[] = [
     name: "Red bin",
     stream: "Non-recyclable / rejects",
     hex: "#B3261E",
+    tint: "#FCEEED",
+    deep: "#8A1C15",
     takes: [
       "Multilayered snack, biscuit and noodle wrappers",
       "Soiled paper, oily wrapping, used tissues",
@@ -83,6 +93,8 @@ export const bins: Bin[] = [
     name: "Yellow container",
     stream: "Hazardous, chemical & biomedical",
     hex: "#C08A16",
+    tint: "#FBF4E4",
+    deep: "#8A6310",
     takes: [
       "Solvent and reagent residues, spent acids and bases",
       "Contaminated gloves, tips, filter papers",
@@ -103,6 +115,8 @@ export const bins: Bin[] = [
     name: "E-waste point",
     stream: "Electrical & electronic",
     hex: "#2B2B2B",
+    tint: "#F1F1F0",
+    deep: "#1A1A1A",
     takes: [
       "Batteries of every chemistry, including button cells",
       "Cables, chargers, adapters, keyboards, mice",

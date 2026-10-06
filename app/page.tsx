@@ -3,6 +3,7 @@ import Figure from "@/components/figure";
 import Icon from "@/components/icons";
 import { BinStrip } from "@/components/binParts";
 import BinFinderPanel from "@/components/binFinderPanel";
+import PosterCarousel from "@/components/posterCarousel";
 import { Section, SectionHead, StatGrid, Button } from "@/components/ui";
 import { headlineMetrics, site, CAP_URL } from "@/content/site";
 import { zones } from "@/content/zones";
@@ -24,21 +25,22 @@ export default function Home() {
                 Learning how waste is segregated, recovered and kept in use &mdash; across the
                 laboratories, twenty-one hostels and more than a thousand homes.
               </p>
-              <div className="mt-6 flex flex-wrap items-center gap-3">
-                <Button href="/guidelines">Start with the three bins</Button>
-                <Button href="/take-action" variant="outline">
-                  Take action
-                </Button>
-              </div>
             </div>
           </div>
 
-          <Figure
-            name="heroCampus"
-            priority
-            className="mt-10 aspect-[16/9] w-full sm:aspect-[5/2] lg:aspect-[3/1]"
-            rounded="rounded-2xl"
-          />
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <Button href="/guidelines">Start with the three bins</Button>
+            <Button href="/take-action" variant="outline">
+              Take action
+            </Button>
+            <Button href="/bin-finder" variant="outline">
+              Bin finder
+            </Button>
+          </div>
+
+          <div className="mt-10">
+            <PosterCarousel />
+          </div>
 
           <div className="mt-8 flex flex-col gap-3 border-t border-ink-line py-6 sm:flex-row sm:items-center sm:gap-10">
             <p className="eyebrow shrink-0">The campus containers</p>

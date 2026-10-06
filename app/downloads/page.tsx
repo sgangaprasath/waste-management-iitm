@@ -1,55 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { PageHeader, Section, SectionHead, Callout, NextSteps } from "@/components/ui";
+import { zonePosters, eventPosters, type Poster } from "@/content/posters";
 
 export const metadata: Metadata = {
   title: "Resources & downloads",
   description:
     "Printable waste segregation posters and event signage for the academic, hostel and residential zones of IIT Madras.",
 };
-
-type Poster = { title: string; blurb: string; file: string };
-
-const zonePosters: Poster[] = [
-  {
-    title: "Campus-wide",
-    blurb: "The three-bin system, for corridors, entrances and noticeboards anywhere on campus.",
-    file: "/posters/Campus.png",
-  },
-  {
-    title: "Academic zone",
-    blurb: "For departments, laboratories, lecture halls and the Central Library.",
-    file: "/posters/Academic.png",
-  },
-  {
-    title: "Hostel zone",
-    blurb: "For hostel floors, mess halls, common rooms and cycle stands.",
-    file: "/posters/Hostel.png",
-  },
-  {
-    title: "Residential zone",
-    blurb: "For quarters, apartment blocks, the community hall and the shopping complex.",
-    file: "/posters/Residential.png",
-  },
-];
-
-const eventPosters: Poster[] = [
-  {
-    title: "Conferences & symposia",
-    blurb: "Bin-station signage for academic events, workshops and paper presentations.",
-    file: "/posters/Conference.png",
-  },
-  {
-    title: "Festivals",
-    blurb: "For Shaastra, Saarang, hostel nights and campus celebrations.",
-    file: "/posters/Festivals.png",
-  },
-  {
-    title: "General event flyer",
-    blurb: "A lighter-touch poster for gatherings, stalls and informal events.",
-    file: "/posters/Fun.png",
-  },
-];
 
 function PosterGrid({ items }: { items: Poster[] }) {
   return (
@@ -62,7 +20,7 @@ function PosterGrid({ items }: { items: Poster[] }) {
           <div className="relative aspect-[4/3] w-full overflow-hidden border-b border-ink-hair bg-paper-soft">
             <Image
               src={p.file}
-              alt={`${p.title} waste segregation poster`}
+              alt={p.alt}
               fill
               sizes="(min-width: 1024px) 25vw, 50vw"
               className="object-contain p-1.5"

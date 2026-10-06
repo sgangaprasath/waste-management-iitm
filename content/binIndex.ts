@@ -129,6 +129,27 @@ export function itemsInGroup(group: string): IndexEntry[] {
     .sort((a, b) => a.item.localeCompare(b.item));
 }
 
+/** Everything that goes in one container, for browsing by colour. */
+export function itemsInBin(bin: BinKey): IndexEntry[] {
+  return fromDictionary
+    .filter((e) => e.bin === bin)
+    .sort((a, b) => a.item.localeCompare(b.item));
+}
+
+/** How many dictionary items each container takes. */
+export const binCounts = fromDictionary.reduce(
+  (acc, e) => {
+    acc[e.bin] = (acc[e.bin] ?? 0) + 1;
+    return acc;
+  },
+  {} as Record<BinKey, number>
+);
+
+/** The container each item ends up in, so chips can be colour-coded. */
+export const binOfItem = new Map<string, BinKey>(
+  fromDictionary.map((e) => [e.item.toLowerCase(), e.bin])
+);
+
 /** A few starting points shown before anyone types. */
 export const commonItems = [
   "Paper cup",
